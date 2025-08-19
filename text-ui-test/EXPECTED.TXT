@@ -1,7 +1,49 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+Great! New task added: [TODO][ ] buy groceries
+Now you have 1 in your list :)
+___________________________________________________
+Nice! This task has been added to the list:
+[DUE][ ] finish homework (by: Friday)
+Now you have 2 in your list :)
+___________________________________________________
+Okay! I've added this to your task list:
+[EVENT][ ] team outing(from: Sat 1pm to: 6pm)
+Now you have 3 in your list :)
+___________________________________________________
+Great! New task added: [TODO][ ] clean room
+Now you have 4 in your list :)
+___________________________________________________
+Okay! I've added this to your task list:
+[EVENT][ ] project meeting(from: Mon 3pm to: 5pm)
+Now you have 5 in your list :)
+___________________________________________________
+Your task list:
+1. [TODO][ ] buy groceries
+2. [DUE][ ] finish homework (by: Friday)
+3. [EVENT][ ] team outing(from: Sat 1pm to: 6pm)
+4. [TODO][ ] clean room
+5. [EVENT][ ] project meeting(from: Mon 3pm to: 5pm)
+___________________________________________________
+Yay! One task down: [DUE][X] finish homework (by: Friday)
+___________________________________________________
+Your task list:
+1. [TODO][ ] buy groceries
+2. [DUE][X] finish homework (by: Friday)
+3. [EVENT][ ] team outing(from: Sat 1pm to: 6pm)
+4. [TODO][ ] clean room
+5. [EVENT][ ] project meeting(from: Mon 3pm to: 5pm)
+___________________________________________________
+Noted! I've marked this task as undone: [DUE][ ] finish homework (by: Friday)
+___________________________________________________
+Your task list:
+1. [TODO][ ] buy groceries
+2. [DUE][ ] finish homework (by: Friday)
+3. [EVENT][ ] team outing(from: Sat 1pm to: 6pm)
+4. [TODO][ ] clean room
+5. [EVENT][ ] project meeting(from: Mon 3pm to: 5pm)
+___________________________________________________
+Sorry! I don't understand what you mean by: hello
+Use these commands at the start of your sentence instead: bye/list/todo/deadline/event/mark/unmark
+Sorry! I don't understand what you mean by: hello
+Use these commands at the start of your sentence instead: bye/list/todo/deadline/event/mark/unmark
+Bye! See you next time :)
+___________________________________________________
