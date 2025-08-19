@@ -1,11 +1,11 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jerry {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String userInput;
-        Tasks[] tasks = new Tasks[100];
-        int count = 0;
+        ArrayList<Task> tasks = new ArrayList<>();
 
         System.out.println("___________________________________________________");
         System.out.println("Hello, nice to meet you! I'm Jerry the mouse!");
@@ -24,26 +24,25 @@ public class Jerry {
                     return;
                 case ("list"):
                     System.out.println("Your task list: ");
-                    for (int i = 0; i < count; i++) {
-                        System.out.println((i + 1) + ". " + tasks[i]);
+                    for (int i = 0; i < tasks.size(); i++) {
+                        System.out.println((i + 1) + ". " + tasks.get(i));
                     }
                     System.out.println("___________________________________________________");
                     break;
                 case ("mark"):
                     int markIdx = Integer.parseInt(entries[1].trim()) - 1;
-                    tasks[markIdx].mark();
-                    System.out.println("Yay! One task down: " + tasks[markIdx]);
+                    tasks.get(markIdx).mark();
+                    System.out.println("Yay! One task down: " + tasks.get(markIdx));
                     System.out.println("___________________________________________________");
                     break;
                 case ("unmark"):
                     int unmarkIdx = Integer.parseInt(entries[1].trim()) - 1;
-                    tasks[unmarkIdx].unmark();
-                    System.out.println("Noted! I've marked this task as undone: " + tasks[unmarkIdx]);
+                    tasks.get(unmarkIdx).mark();
+                    System.out.println("Noted! I've marked this task as undone: " + tasks.get(unmarkIdx));
                     System.out.println("___________________________________________________");
                     break;
                 default:
-                    tasks[count] = new Tasks(userInput);
-                    count++;
+                    tasks.add(new Task(userInput));
                     System.out.println("new task added: " + userInput);
                     System.out.println("___________________________________________________");
             }

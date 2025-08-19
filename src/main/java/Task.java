@@ -1,8 +1,8 @@
-public class Tasks {
+public class Task {
     protected String desc;
     protected boolean isDone;
 
-    public Tasks(String desc) {
+    public Task(String desc) {
         this.desc = desc;
         this.isDone = false;
     }
