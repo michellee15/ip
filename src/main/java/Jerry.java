@@ -41,10 +41,32 @@ public class Jerry {
                     System.out.println("Noted! I've marked this task as undone: " + tasks.get(unmarkIdx));
                     System.out.println("___________________________________________________");
                     break;
-                default:
-                    tasks.add(new Task(userInput));
-                    System.out.println("new task added: " + userInput);
+                case ("deadline"):
+                    String[] parts = entries[1].split("by", 2);
+                    Task deadline = new Deadline(parts[0].trim(), parts[1].trim());
+                    tasks.add(deadline);
+                    System.out.println("Nice! This task has been added to the list: \n" + deadline);
+                    System.out.println("Now you have " + tasks.size() + " in your list :)");
                     System.out.println("___________________________________________________");
+                    break;
+                case ("event"):
+                    String[] events = entries[1].split("from|to");
+                    Task event = new Events(events[0].trim(), events[1].trim(), events[2].trim());
+                    tasks.add(event);
+                    System.out.println("Okay! I've added this to your task list: \n" + event);
+                    System.out.println("Now you have " + tasks.size() + " in your list :)");
+                    System.out.println("___________________________________________________");
+                    break;
+                case ("todo"):
+                    Task todo = new ToDo(entries[1]);
+                    tasks.add(todo);
+                    System.out.println("Great! New task added: " + userInput);
+                    System.out.println("Now you have " + tasks.size() + " in your list :)");
+                    System.out.println("___________________________________________________");
+                    break;
+                default:
+                    System.out.println("___________________________________________________");
+
             }
         }
     }
