@@ -37,7 +37,7 @@ public class Jerry {
                     break;
                 case ("unmark"):
                     int unmarkIdx = Integer.parseInt(entries[1].trim()) - 1;
-                    tasks.get(unmarkIdx).mark();
+                    tasks.get(unmarkIdx).unmark();
                     System.out.println("Noted! I've marked this task as undone: " + tasks.get(unmarkIdx));
                     System.out.println("___________________________________________________");
                     break;
