@@ -60,7 +60,7 @@ public class Jerry {
                 case ("todo"):
                     Task todo = new ToDo(entries[1]);
                     tasks.add(todo);
-                    System.out.println("Great! New task added: " + entries[1]);
+                    System.out.println("Great! New task added: " + todo);
                     System.out.println("Now you have " + tasks.size() + " in your list :)");
                     System.out.println("___________________________________________________");
                     break;
