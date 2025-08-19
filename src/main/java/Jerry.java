@@ -60,12 +60,14 @@ public class Jerry {
                 case ("todo"):
                     Task todo = new ToDo(entries[1]);
                     tasks.add(todo);
-                    System.out.println("Great! New task added: " + userInput);
+                    System.out.println("Great! New task added: " + entries[1]);
                     System.out.println("Now you have " + tasks.size() + " in your list :)");
                     System.out.println("___________________________________________________");
                     break;
                 default:
-                    System.out.println("___________________________________________________");
+                    System.out.println("Sorry! I don't understand what you mean by: " + userInput +
+                            "\nUse these commands at the start of your sentence instead: " +
+                            "bye/list/todo/deadline/event/mark/unmark");
 
             }
         }
