@@ -12,7 +12,7 @@ public class Jerry {
         System.out.println("What can I do for you today?");
         System.out.println("___________________________________________________");
 
-        while (true) {
+        while (sc.hasNextLine()) {
             try {
                 userInput = sc.nextLine();
                 System.out.println("___________________________________________________");
@@ -33,30 +33,6 @@ public class Jerry {
                         }
                         System.out.println("___________________________________________________");
                         break;
-                    case ("mark"):
-                        if (entries.length < 2 || entries[1].trim().isEmpty()) {
-                            throw new JerryException("Please specify which task number you want to mark!");
-                        }
-                        int markIdx = Integer.parseInt(entries[1].trim()) - 1;
-                        if (markIdx < 0 || markIdx >= tasks.size()) {
-                            throw new ListIndexOutOfBoundException("The task number you entered is invalid...Please try again!");
-                        }
-                        tasks.get(markIdx).mark();
-                        System.out.println("Yay! One task down: " + tasks.get(markIdx));
-                        System.out.println("___________________________________________________");
-                        break;
-                    case ("unmark"):
-                        if (entries.length < 2 || entries[1].trim().isEmpty()) {
-                            throw new JerryException("Please specify which task number you want to unmark!");
-                        }
-                        int unmarkIdx = Integer.parseInt(entries[1].trim()) - 1;
-                        if (unmarkIdx < 0 || unmarkIdx >= tasks.size()) {
-                            throw new ListIndexOutOfBoundException("The task number you entered is invalid...Please try again!");
-                        }
-                        tasks.get(unmarkIdx).unmark();
-                        System.out.println("Noted! I've marked this task as undone: " + tasks.get(unmarkIdx));
-                        System.out.println("___________________________________________________");
-                        break;
                     case ("deadline"):
                         if (entries.length < 2) {
                             throw new JerryException("You need to specify the task description and the due date");
@@ -71,7 +47,6 @@ public class Jerry {
                         if (entries.length < 2) {
                             throw new InvalidCommandFormatException("Uh Oh! You need to specify the event description and a timeframe (its starting time and ending time)");
                         }
-                        String[] events = entries[1].split("from|to");
                         Task event = new Events(userInput);
                         tasks.add(event);
                         System.out.println("Okay! I've added this to your task list:\n" + event);
@@ -88,16 +63,43 @@ public class Jerry {
                         System.out.println("Now you have " + tasks.size() + " in your list :)");
                         System.out.println("___________________________________________________");
                         break;
+                    case ("mark"):
+                        int markIdx = checkIndex(entries, tasks.size());
+                        tasks.get(markIdx).mark();
+                        System.out.println("Yay! One task down: " + tasks.get(markIdx));
+                        System.out.println("___________________________________________________");
+                        break;
+                    case ("unmark"):
+                        int unmarkIdx = checkIndex(entries, tasks.size());
+                        tasks.get(unmarkIdx).unmark();
+                        System.out.println("Noted! I've marked this task as undone: " + tasks.get(unmarkIdx));
+                        System.out.println("___________________________________________________");
+                        break;
                     default:
                         throw new InvalidCommandException("Sorry! I don't understand what you mean by: " + userInput +
                                 "\nUse these commands at the start of your sentence instead: " +
-                                "bye/list/todo/deadline/event/mark/unmark");
+                                "bye/list/todo/deadline/event/mark/unmark/delete");
 
                 }
             } catch (JerryException e) {
                 System.out.println(e.getMessage());
                 System.out.println("___________________________________________________");
             }
+        }
+    }
+
+    private static int checkIndex(String[] entries, int size) throws JerryException {
+        if (entries.length < 2 || entries[1].trim().isEmpty()) {
+            throw new InvalidCommandFormatException("Task number must be a positive integer!");
+        }
+        try {
+            int idx = Integer.parseInt(entries[1].trim()) - 1;
+            if (idx < 0 || idx >= size) {
+                throw new InvalidCommandFormatException("Oops! The task number you entered is invalid...Please try again!");
+            }
+            return idx;
+        } catch (NumberFormatException e) {
+            throw new JerryException("Task number must be a positive integer!");
         }
     }
 }
