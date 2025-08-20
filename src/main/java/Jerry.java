@@ -79,6 +79,7 @@ public class Jerry {
                         int delIdx = checkIndex(entries, tasks.size());
                         System.out.println("Noted! I've marked this task as deleted: " + tasks.get(delIdx));
                         tasks.remove(delIdx);
+                        System.out.println("Now you have " + tasks.size() + " in your list :)");
                         System.out.println("___________________________________________________");
                         break;
                     default:
