@@ -75,6 +75,12 @@ public class Jerry {
                         System.out.println("Noted! I've marked this task as undone: " + tasks.get(unmarkIdx));
                         System.out.println("___________________________________________________");
                         break;
+                    case ("delete"):
+                        int delIdx = checkIndex(entries, tasks.size());
+                        System.out.println("Noted! I've marked this task as deleted: " + tasks.get(delIdx));
+                        tasks.remove(delIdx);
+                        System.out.println("___________________________________________________");
+                        break;
                     default:
                         throw new InvalidCommandException("Sorry! I don't understand what you mean by: " + userInput +
                                 "\nUse these commands at the start of your sentence instead: " +
