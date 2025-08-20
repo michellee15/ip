@@ -10,7 +10,7 @@ public class Deadline extends Task {
         if (parts.length < 2 || parts[0].trim().isEmpty() || parts[1].trim().isEmpty()) {
             throw new InvalidCommandFormatException("You must add a keyword 'by' after the task description and before the due date/time entered");
         }
-        super(entries[0].trim());
+        super(parts[0].trim());
         this.dueDate = parts[1].trim();
 
     }

@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jerry {
+    public enum Command {
+        BYE, LIST, DEADLINE, EVENT, TODO, MARK, UNMARK, DELETE
+    }
     public static void main(String[] args) throws JerryException {
         Scanner sc = new Scanner(System.in);
         String userInput;
@@ -17,13 +20,20 @@ public class Jerry {
                 userInput = sc.nextLine();
                 System.out.println("___________________________________________________");
                 String[] entries = userInput.split(" ", 2);
-                String command = entries[0].toLowerCase();
+                Command command;
+                try {
+                    command = Command.valueOf(entries[0].toUpperCase());
+                } catch (IllegalArgumentException e) {
+                    throw new InvalidCommandException("Sorry! I don't understand what you mean by: " + userInput +
+                            "\nUse these commands at the start of your sentence instead: " +
+                            "bye/list/todo/deadline/event/mark/unmark/delete");
+                }
                 switch (command) {
-                    case ("bye"):
+                    case BYE:
                         System.out.println("Bye! See you next time :D");
                         System.out.println("___________________________________________________");
                         return;
-                    case ("list"):
+                    case LIST:
                         if (tasks.isEmpty()) {
                             throw new JerryException("Your task list is currently empty...");
                         }
@@ -33,7 +43,7 @@ public class Jerry {
                         }
                         System.out.println("___________________________________________________");
                         break;
-                    case ("deadline"):
+                    case DEADLINE:
                         if (entries.length < 2) {
                             throw new JerryException("You need to specify the task description and the due date");
                         }
@@ -43,7 +53,7 @@ public class Jerry {
                         System.out.println("Now you have " + tasks.size() + " in your list :)");
                         System.out.println("___________________________________________________");
                         break;
-                    case ("event"):
+                    case EVENT:
                         if (entries.length < 2) {
                             throw new InvalidCommandFormatException("Uh Oh! You need to specify the event description and a timeframe (its starting time and ending time)");
                         }
@@ -53,7 +63,7 @@ public class Jerry {
                         System.out.println("Now you have " + tasks.size() + " in your list :)");
                         System.out.println("___________________________________________________");
                         break;
-                    case ("todo"):
+                    case TODO:
                         if (entries.length < 2) {
                             throw new InvalidCommandFormatException("Uh Oh! You forgot to describe what your todo is...");
                         }
@@ -63,29 +73,25 @@ public class Jerry {
                         System.out.println("Now you have " + tasks.size() + " in your list :)");
                         System.out.println("___________________________________________________");
                         break;
-                    case ("mark"):
+                    case MARK:
                         int markIdx = checkIndex(entries, tasks.size());
                         tasks.get(markIdx).mark();
                         System.out.println("Yay! One task down: " + tasks.get(markIdx));
                         System.out.println("___________________________________________________");
                         break;
-                    case ("unmark"):
+                    case UNMARK:
                         int unmarkIdx = checkIndex(entries, tasks.size());
                         tasks.get(unmarkIdx).unmark();
                         System.out.println("Noted! I've marked this task as undone: " + tasks.get(unmarkIdx));
                         System.out.println("___________________________________________________");
                         break;
-                    case ("delete"):
+                    case DELETE:
                         int delIdx = checkIndex(entries, tasks.size());
                         System.out.println("Noted! I've marked this task as deleted: " + tasks.get(delIdx));
                         tasks.remove(delIdx);
                         System.out.println("Now you have " + tasks.size() + " in your list :)");
                         System.out.println("___________________________________________________");
                         break;
-                    default:
-                        throw new InvalidCommandException("Sorry! I don't understand what you mean by: " + userInput +
-                                "\nUse these commands at the start of your sentence instead: " +
-                                "bye/list/todo/deadline/event/mark/unmark/delete");
 
                 }
             } catch (JerryException e) {
