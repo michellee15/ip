@@ -1,14 +1,20 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class Deadline extends Task {
-    private final String dueDate;
+    private final LocalDateTime dueDate;
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
 
     public Deadline(String desc) throws InvalidCommandFormatException {
-//        String[] entries = desc.split(" ",2);
-//        if (entries.length < 2 || entries[1].trim().isEmpty()) {
-//            throw new InvalidCommandFormatException("You need to specify the task description and the due date");
-//        }
        super(parseDesc(desc));
-       this.dueDate = parseDate(desc);
-
+       String date = parseDate(desc);
+       try {
+           DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm");
+           this.dueDate = LocalDateTime.parse(date, formatter);
+       } catch (DateTimeParseException e) {
+           throw new InvalidCommandFormatException("Uh Oh! Invalid date/time format, use yyyy-MM-dd hour and min (eg. 2019-10-05 1800)");
+       }
     }
 
     private static String parseDesc(String desc) throws InvalidCommandFormatException {
@@ -34,12 +40,12 @@ public class Deadline extends Task {
 
     @Override
     public String toFileString() {
-        return "D | " + super.toFileString() + " | " + this.dueDate;
+        return "D | " + super.toFileString() + " | " + this.dueDate.format(formatter);
     }
 
     @Override
     public String toString() {
-        return "[DUE]" + super.toString() + " (by: " + this.dueDate + ")";
+        return "[DUE]" + super.toString() + " (by: " + this.dueDate.format(formatter) + ")";
     }
 
 }
