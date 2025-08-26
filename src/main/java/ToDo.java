@@ -1,11 +1,23 @@
 public class ToDo extends Task {
 
     public ToDo(String desc) throws InvalidCommandFormatException {
-        super(desc);
-        String[] entries = desc.split(" ",2);
-        if (entries[1].isEmpty()) {
+        super(parseDesc(desc));
+    }
+
+    private static String parseDesc(String input) throws InvalidCommandFormatException {
+        String desc = input.trim();
+        if (desc.toLowerCase().startsWith("todo ")) {
+            desc = desc.substring(5).trim();
+        }
+        if (desc.isEmpty() || desc.equalsIgnoreCase("todo")) {
             throw new InvalidCommandFormatException("Uh Oh! You forgot to describe what your todo is...");
         }
+        return desc;
+    }
+
+    @Override
+    public String toFileString() {
+        return "T | " + super.toFileString();
     }
 
     @Override
