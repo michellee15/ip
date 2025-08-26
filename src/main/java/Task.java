@@ -2,7 +2,10 @@ public class Task {
     protected String desc;
     protected boolean isDone;
 
-    public Task(String desc) {
+    public Task(String desc) throws InvalidCommandFormatException{
+        if (desc == null || desc.trim().isEmpty()) {
+            throw new InvalidCommandFormatException("Oops! Task description cannot be empty...");
+        }
         this.desc = desc;
         this.isDone = false;
     }
@@ -11,12 +14,20 @@ public class Task {
         return this.isDone ? "X" : " ";
     }
 
+    public String getDesc() {
+        return this.desc;
+    }
+
     public void mark() {
         this.isDone = true;
     }
 
     public void unmark() {
         this.isDone = false;
+    }
+
+    public String toFileString() {
+        return (this.isDone ? "1" : "0") + " | " + this.desc;
     }
 
     @Override

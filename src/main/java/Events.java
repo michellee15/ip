@@ -1,23 +1,47 @@
+import java.util.Arrays;
+
 public class Events extends Task {
+    private final String date;
     private final String from;
     private final String to;
 
     public Events(String desc) throws InvalidCommandFormatException {
-        String[] entries = desc.split(" ", 2);
-        if (entries.length < 2 || entries[1].trim().isEmpty()) {
-            throw new InvalidCommandFormatException("Uh Oh! You need to specify the event description and a timeframe (its starting time and ending time)");
+        super(parseDesc(desc));
+        int fromIdx = desc.lastIndexOf(" from ");
+        int toIdx = desc.lastIndexOf(" to ");
+        if (fromIdx == -1 || toIdx == -1 || fromIdx >= toIdx) {
+            throw new InvalidCommandFormatException("Event must have time in 'from-to' format");
         }
-        String[] events = entries[1].split("from|to");
-        if (events.length < 3 || events[0].trim().isEmpty() || events[1].trim().isEmpty() || events[2].trim().isEmpty()) {
-            throw new InvalidCommandFormatException("Oops! Event must have 'from' and 'to' keywords!");
+        this.from = desc.substring(fromIdx + 6, toIdx).trim();
+        this.to = desc.substring(toIdx + 4).trim();
+        this.date = desc.substring(super.getDesc().length(), fromIdx);
+        if (this.from.isEmpty() || this.to.isEmpty()) {
+            throw new InvalidCommandFormatException("Event must have valid from and to times");
         }
-        super(events[0].trim());
-        this.from = events[1].trim();
-        this.to = events[2].trim();
+    }
+
+    private static String parseDesc(String input) throws InvalidCommandFormatException {
+        int fromIdx =  input.lastIndexOf(" from ");
+        String desc = (fromIdx == -1) ? input.trim() : input.substring(0, fromIdx).trim();
+        if (desc.isEmpty()) throw new InvalidCommandFormatException("You must provide a description for the event!");
+        return desc;
+    }
+
+    @Override
+    public String toFileString() {
+        if (date.isEmpty()) {
+            return "E | " + super.toFileString() + " | " + this.from + "-" + this.to;
+        } else {
+            return "E | " + super.toFileString() + " | " + this.date + " " + this.from + "-" + this.to;
+        }
     }
 
     @Override
     public String toString() {
-        return "[EVENT]" + super.toString() + " (from: " + this.from + " to: " + this.to + ")";
+        if (date.isEmpty()) {
+            return "[EVENT]" + super.toString() + " (from: " + this.from + " to: " + this.to + ")";
+        } else {
+            return "[EVENT]" + super.toString() + "(" + this.date + " from: " + this.from + " to: " + this.to + ")";
+        }
     }
 }
