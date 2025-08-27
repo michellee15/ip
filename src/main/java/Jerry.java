@@ -127,7 +127,7 @@ public class Jerry {
 
     private static int checkIndex(String[] entries, int size) throws JerryException {
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
-            throw new InvalidCommandFormatException("Task.Task number must be a positive integer!");
+            throw new InvalidCommandFormatException("Task number must be a positive integer!");
         }
         try {
             int idx = Integer.parseInt(entries[1].trim()) - 1;
