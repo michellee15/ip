@@ -46,11 +46,11 @@ public class Ui {
     }
 
     public void showMarked(Task task) {
-        System.out.println("Yay! One task down: " + task);
+        System.out.println("Yay! One task down:\n" + task);
     }
 
     public void showUnmarked(Task task) {
-        System.out.println("Noted! I've marked this task as undone: " + task);
+        System.out.println("Noted! I've marked this task as undone:\n" + task);
     }
 
     public void showLoadingError() {
@@ -65,6 +65,10 @@ public class Ui {
         for (int i = 0; i < taskList.getSize(); i++) {
             System.out.println((i + 1) + ". " + taskList.get(i));
         }
+    }
+
+    public void displayOutput(String text) {
+        System.out.println(text);
     }
 
 }

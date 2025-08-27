@@ -1,12 +1,18 @@
 import exceptions.InvalidCommandFormatException;
+import exceptions.JerryException;
+
 import task.Event;
+import tasklist.TaskList;
+import storage.Storage;
 
 public class EventCommand extends Command{
+
     private String desc = "";
     private String fromDate = "";
     private String fromTime = "";
     private String toDate  = "";
     private String toTime = "";
+
     public EventCommand(String desc) throws InvalidCommandFormatException {
         try {
             String[] strArray = desc.split("/from");
@@ -24,7 +30,23 @@ public class EventCommand extends Command{
             throw new InvalidCommandFormatException("Event must have time in 'from-to' format");
         }
     }
-    public Event run() throws InvalidCommandFormatException {
-        return new Event(desc, fromDate, fromTime, toDate, toTime);
+
+    @Override
+    public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
+        Event event = new Event(desc, fromDate, fromTime, toDate, toTime);
+        this.response = taskList.addTask(event);
+        storage.writeToFile(taskList.toString());
+        ui.displayOutput(this.response);
     }
+
+    @Override
+    public boolean isExit() {
+        return false;
+    }
+
+    @Override
+    public String getString() {
+        return this.response;
+    }
+
 }

@@ -29,24 +29,6 @@ public class Event extends Task {
         }
     }
 
-    private static LocalTime parseTime(String input) throws DateTimeParseException {
-        input = input.toLowerCase().replaceAll("\\s+", "");
-
-        try {
-            return LocalTime.parse(input, TIME_FORMATTER);
-        } catch (DateTimeParseException e) {
-            boolean isPm = input.endsWith("pm");
-            boolean isAm = input.endsWith("am");
-            String numberPart = input.replaceAll("(am|pm)", "");
-            String[] parts = numberPart.split(":");
-            int hour = Integer.parseInt(parts[0]);
-            int min = parts.length > 1 ? Integer.parseInt(parts[1]) : 0;
-            if (isPm && hour < 12) hour += 12;
-            if (isAm && hour == 12) hour = 0;
-            return LocalTime.of(hour, min);
-        }
-    }
-
     @Override
     public String toFileString() {
         return "E | " + super.toFileString() + " | "

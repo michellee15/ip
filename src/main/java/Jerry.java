@@ -78,9 +78,7 @@ public class Jerry {
                     if (entries.length < 2) {
                         throw new InvalidCommandFormatException("Uh Oh! You need to specify the event description and a timeframe (its starting time and ending time)");
                     }
-                    EventCommand eventCommand = new EventCommand(entries[1]);
-                    Event event = eventCommand.run();
-                    taskList.addTask(event);
+                    EventCommand event = new EventCommand(entries[1]);
                     System.out.println("Okay! I've added this to your task list:\n" + event);
                     System.out.println("Now you have " + taskList.getSize() + " in your list :)");
                     System.out.println("___________________________________________________");
@@ -91,9 +89,7 @@ public class Jerry {
                         throw new InvalidCommandFormatException("Uh Oh! You forgot to describe what your todo is...");
                     }
                     TodoCommand todoCommand = new TodoCommand(entries[1]);
-                    ToDo toDo = todoCommand.run();
-                    taskList.addTask(toDo);
-                    System.out.println("Great! New task added: " + toDo);
+                    System.out.println("Great! New task added: " + todoCommand);
                     System.out.println("Now you have " + taskList.getSize() + " in your list :)");
                     System.out.println("___________________________________________________");
                     taskList.saveTasks(storage);
@@ -115,7 +111,7 @@ public class Jerry {
                 case DELETE:
                     int delIdx = checkIndex(entries, taskList.getSize());
                     System.out.println("Noted! I've marked this task as deleted: " + taskList.get(delIdx));
-                    taskList.delete(delIdx);
+                    taskList.deleteTask(delIdx);
                     System.out.println("Now you have " + taskList.getSize() + " in your list :)");
                     System.out.println("___________________________________________________");
                     taskList.saveTasks(storage);

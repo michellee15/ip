@@ -6,7 +6,7 @@ import tasklist.TaskList;
 public abstract class Command {
     protected String response;
 
-    public abstract void execute(TaskList tasks, Storage storage) throws JerryException;
+    public abstract void execute(TaskList tasks, Ui ui, Storage storage) throws JerryException;
 
     public abstract boolean isExit();
 

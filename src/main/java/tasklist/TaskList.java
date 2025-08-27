@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import exceptions.JerryException;
+import exceptions.ListIndexOutOfBoundException;
 import storage.Storage;
 import task.Deadline;
 import task.Event;
@@ -55,32 +56,67 @@ public class TaskList {
         }
     }
 
-    public void addTask(Task task) {
+    public String addTask(Task task) {
         taskList.add(task);
+        return "Great! New task added:\n" + task.toString()
+                + "\n" + "Now you have " + getSize() + " in your list :)";
     }
 
-    public Task get(int taskIndex) {
-        return taskList.get(taskIndex);
+    public Task get(int index) {
+        return taskList.get(index);
     }
 
-    public Task delete(int taskIndex) {
-        return taskList.remove(taskIndex);
+    public String deleteTask(int taskIndex) throws ListIndexOutOfBoundException {
+        if (taskIndex < 0) {
+            throw new ListIndexOutOfBoundException("Task number must be positive.");
+        } else if (taskIndex > this.getSize()) {
+            throw new ListIndexOutOfBoundException("Oops! You only have " + this.getSize() + " tasks in the list.");
+        }
+        Task task = taskList.remove(taskIndex - 1);
+        return "Noted! I've marked this task as deleted:\n" + task.toString() +
+                "\n" + "Now you have " + this.getSize() + " tasks in the list!";
     }
 
-    public void mark(int taskIndex) {
-        taskList.get(taskIndex).mark();
+    public String getList() {
+        StringBuilder output = new StringBuilder("Here is your task list: ");
+        if (this.getSize() > 0) {
+            output.append("\n");
+        }
+        for (int i = 0; i < taskList.size(); i++) {
+            int index = i + 1;
+            output.append(index).append(".").append(taskList.get(i));
+            if (i < taskList.size() - 1) {
+                output.append("\n");
+            }
+        }
+        if (output.toString().equals("Here is your task list: ")) {
+            return "Your task list is currently empty...";
+        }
+        return output.toString();
     }
 
-    public void unmark(int taskIndex) {
-        taskList.get(taskIndex).unmark();
+    public String mark(int taskIndex) throws ListIndexOutOfBoundException {
+        if (taskIndex <= 0) {
+            throw new ListIndexOutOfBoundException("Task number must be positive.");
+        } else if (taskIndex > this.getSize()) {
+            throw new ListIndexOutOfBoundException("Oops! You only have \" + this.getSize() + \" tasks in the list.");
+        }
+        taskList.get(taskIndex - 1).mark();
+        return "Yay! One task down:\n" + taskList.get(taskIndex - 1).toString();
+    }
+
+    public String unmark(int taskIndex) throws ListIndexOutOfBoundException{
+        if (taskIndex <= 0) {
+            throw new ListIndexOutOfBoundException("Task number must be positive.");
+        } else if (taskIndex > this.getSize()) {
+            throw new ListIndexOutOfBoundException("Oops! You only have \" + this.getSize() + \" tasks in the list.");
+        }
+        taskList.get(taskIndex - 1).unmark();
+        return "Noted! I've marked this task as undone:\n" + taskList.get(taskIndex - 1).toString();
     }
 
     public int getSize() {
         return taskList.size();
-    }
-
-    public List<Task> getAll() {
-        return new ArrayList<>(taskList);
     }
 
     public void saveTasks(Storage storage) {
