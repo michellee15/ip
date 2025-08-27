@@ -1,3 +1,14 @@
+import command.EventCommand;
+import command.TodoCommand;
+import exceptions.InvalidCommandException;
+import exceptions.InvalidCommandFormatException;
+import exceptions.JerryException;
+import storage.Storage;
+import task.Task;
+import task.Deadline;
+import task.Events;
+import task.ToDo;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -68,7 +79,8 @@ public class Jerry {
                     if (entries.length < 2) {
                         throw new InvalidCommandFormatException("Uh Oh! You need to specify the event description and a timeframe (its starting time and ending time)");
                     }
-                    Task event = new Events(entries[1]);
+                    EventCommand eventCommand = new EventCommand(entries[1]);
+                    Events event = eventCommand.run();
                     tasks.add(event);
                     System.out.println("Okay! I've added this to your task list:\n" + event);
                     System.out.println("Now you have " + tasks.size() + " in your list :)");
@@ -79,9 +91,10 @@ public class Jerry {
                     if (entries.length < 2) {
                         throw new InvalidCommandFormatException("Uh Oh! You forgot to describe what your todo is...");
                     }
-                    Task todo = new ToDo(entries[1]);
-                    tasks.add(todo);
-                    System.out.println("Great! New task added: " + todo);
+                    TodoCommand todoCommand = new TodoCommand(entries[1]);
+                    ToDo toDo = todoCommand.run();
+                    tasks.add(toDo);
+                    System.out.println("Great! New task added: " + toDo);
                     System.out.println("Now you have " + tasks.size() + " in your list :)");
                     System.out.println("___________________________________________________");
                     saveTasks(storage, tasks);
@@ -119,7 +132,7 @@ public class Jerry {
 
     private static int checkIndex(String[] entries, int size) throws JerryException {
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
-            throw new InvalidCommandFormatException("Task number must be a positive integer!");
+            throw new InvalidCommandFormatException("Task.Task number must be a positive integer!");
         }
         try {
             int idx = Integer.parseInt(entries[1].trim()) - 1;
@@ -128,7 +141,7 @@ public class Jerry {
             }
             return idx;
         } catch (NumberFormatException e) {
-            throw new JerryException("Task number must be a positive integer!");
+            throw new JerryException("Task.Task number must be a positive integer!");
         }
     }
 
@@ -140,19 +153,23 @@ public class Jerry {
                 String[] details = line.split("\\s*\\|\\s*");
                 switch (details[0]) {
                 case "T" :
-                    ToDo todo = new ToDo(details[2]);
+                    ToDo todo = new ToDo(details[2].trim());
                     if (details[1].equals("1")) todo.mark();
                     tasks.add(todo);
                     break;
                 case "D" :
-                    Deadline deadline = new Deadline(details[2] + " by " + details[3]);
-                    if (details[1].equals("1")) deadline.mark();
+                    Deadline deadline = new Deadline(details[2].trim() + " by " + details[3].trim());
+                    if (details[1].trim().equals("1")) deadline.mark();
                     tasks.add(deadline);
                     break;
                 case "E" :
+                    if (details.length != 5) {
+                        throw new JerryException("");
+                    }
                     String desc = details[2].trim();
-                    String time = details[3].trim();
-                    tasks.add(new Events(desc + " from " + time.split("-")[0] + " to " + time.split("-")[1]));
+                    String[] fromDateTime = details[3].trim().split(" ");
+                    String[] toDateTime = details[4].trim().split(" ");
+                    tasks.add(new Events(desc, fromDateTime[0], fromDateTime[1], toDateTime[0], toDateTime[1]));
                     break;
                 }
             }

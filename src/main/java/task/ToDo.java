@@ -1,3 +1,7 @@
+package task;
+
+import exceptions.InvalidCommandFormatException;
+
 public class ToDo extends Task {
 
     public ToDo(String desc) throws InvalidCommandFormatException {
