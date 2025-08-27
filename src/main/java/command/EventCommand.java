@@ -1,7 +1,7 @@
 package command;
 
 import exceptions.InvalidCommandFormatException;
-import task.Events;
+import task.Event;
 
 public class EventCommand extends Command{
     private String desc = "";
@@ -26,7 +26,7 @@ public class EventCommand extends Command{
             throw new InvalidCommandFormatException("Event must have time in 'from-to' format");
         }
     }
-    public Events run() throws InvalidCommandFormatException {
-        return new Events(desc, fromDate, fromTime, toDate, toTime);
+    public Event run() throws InvalidCommandFormatException {
+        return new Event(desc, fromDate, fromTime, toDate, toTime);
     }
 }

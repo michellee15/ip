@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 
-public class Events extends Task {
+public class Event extends Task {
     private final LocalDate fromDate;
     private final LocalTime fromTime;
     private final LocalDate toDate;
@@ -17,7 +17,7 @@ public class Events extends Task {
     private static final DateTimeFormatter DISPLAY_DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
-    public Events(String desc, String fromDate, String fromTime, String toDate, String toTime) throws InvalidCommandFormatException {
+    public Event(String desc, String fromDate, String fromTime, String toDate, String toTime) throws InvalidCommandFormatException {
         super(desc);
         try {
             this.fromDate = LocalDate.parse(fromDate, FILE_DATE_FORMATTER);
