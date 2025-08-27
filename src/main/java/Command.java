@@ -1,4 +1,3 @@
-package command;
 
 import exceptions.JerryException;
 import storage.Storage;

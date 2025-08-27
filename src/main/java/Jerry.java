@@ -1,5 +1,3 @@
-import command.EventCommand;
-import command.TodoCommand;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandFormatException;
 import exceptions.JerryException;

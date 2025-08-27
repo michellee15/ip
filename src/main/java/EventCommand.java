@@ -1,5 +1,3 @@
-package command;
-
 import exceptions.InvalidCommandFormatException;
 import task.Event;
 
