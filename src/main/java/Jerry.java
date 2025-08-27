@@ -3,15 +3,15 @@ import command.TodoCommand;
 import exceptions.InvalidCommandException;
 import exceptions.InvalidCommandFormatException;
 import exceptions.JerryException;
+
 import storage.Storage;
 import task.Task;
 import task.Deadline;
 import task.Event;
 import task.ToDo;
+import tasklist.TaskList;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Jerry {
