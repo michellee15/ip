@@ -1,3 +1,7 @@
+package storage;
+
+import exceptions.JerryException;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

@@ -1,10 +1,14 @@
-public class Task {
+package task;
+
+import exceptions.InvalidCommandFormatException;
+
+public abstract class Task {
     protected String desc;
     protected boolean isDone;
 
-    public Task(String desc) throws InvalidCommandFormatException{
+    public Task(String desc) throws InvalidCommandFormatException {
         if (desc == null || desc.trim().isEmpty()) {
-            throw new InvalidCommandFormatException("Oops! Task description cannot be empty...");
+            throw new InvalidCommandFormatException("Oops! Task.Task description cannot be empty...");
         }
         this.desc = desc;
         this.isDone = false;
