@@ -13,7 +13,7 @@ public class Storage {
         this.filePath = filePath;
     }
 
-    public File loadToFile() throws JerryException {
+    public File load() throws JerryException {
         try {
             File file = new File(filePath);
             if (!file.exists()) {

@@ -12,7 +12,7 @@ public class Ui {
         sc = new Scanner(System.in);
     }
 
-    public void showGreet() {
+    public void showWelcome() {
         System.out.println("___________________________________________________");
         System.out.println("Hello, nice to meet you! I'm Jerry the mouse!");
         System.out.println("What can I do for you today?");

@@ -2,6 +2,7 @@ package tasklist;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -36,7 +37,7 @@ public class TaskList {
                     taskList.add(todo);
                     break;
                 case "D":
-                    Deadline deadline = new Deadline(details[2].trim() + " by " + details[3].trim());
+                    Deadline deadline = Deadline.fromFile(details[2].trim(), details[3].trim());
                     if (details[1].trim().equals("1")) deadline.mark();
                     taskList.add(deadline);
                     break;

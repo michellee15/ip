@@ -4,6 +4,7 @@ import exceptions.InvalidCommandFormatException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Deadline extends Task {
     private final LocalDateTime dueDate;
@@ -14,6 +15,15 @@ public class Deadline extends Task {
     public Deadline(String desc, LocalDateTime dueDate) throws InvalidCommandFormatException {
        super(desc);
        this.dueDate = dueDate;
+    }
+
+    public static Deadline fromFile(String desc, String dateString) throws InvalidCommandFormatException {
+        try {
+            LocalDateTime dueDate = LocalDateTime.parse(dateString, FILE_FORMATTER);
+            return new Deadline(desc, dueDate);
+        } catch (DateTimeParseException e) {
+            throw new InvalidCommandFormatException("Corrupted deadline in save file: " + dateString);
+        }
     }
 
     @Override
