@@ -29,7 +29,7 @@ public class Jerry {
             taskList = new TaskList(file);
         } catch (JerryException e) {
             System.out.println(e.getMessage());
-            taskList = new TaskList()
+            taskList = new TaskList();
         }
 
         System.out.println("___________________________________________________");
@@ -56,12 +56,12 @@ public class Jerry {
                     System.out.println("___________________________________________________");
                     return;
                 case LIST:
-                    if (tasks.isEmpty()) {
+                    if (taskList.getSize() == 0) {
                         throw new JerryException("Your task list is currently empty...");
                     }
                     System.out.println("Your task list:");
-                    for (int i = 0; i < tasks.size(); i++) {
-                        System.out.println((i + 1) + ". " + tasks.get(i));
+                    for (int i = 0; i < taskList.getSize(); i++) {
+                        System.out.println((i + 1) + ". " + taskList.get(i));
                     }
                     System.out.println("___________________________________________________");
                     break;
@@ -70,11 +70,11 @@ public class Jerry {
                         throw new JerryException("You need to specify the task description and the due date");
                     }
                     Task deadline = new Deadline(entries[1]);
-                    tasks.add(deadline);
+                    taskList.addTask(deadline);
                     System.out.println("Nice! This task has been added to the list:\n" + deadline);
-                    System.out.println("Now you have " + tasks.size() + " in your list :)");
+                    System.out.println("Now you have " + taskList.getSize() + " in your list :)");
                     System.out.println("___________________________________________________");
-                    saveTasks(storage, tasks);
+                    taskList.saveTasks(storage);
                     break;
                 case EVENT:
                     if (entries.length < 2) {
@@ -82,11 +82,11 @@ public class Jerry {
                     }
                     EventCommand eventCommand = new EventCommand(entries[1]);
                     Event event = eventCommand.run();
-                    tasks.add(event);
+                    taskList.addTask(event);
                     System.out.println("Okay! I've added this to your task list:\n" + event);
-                    System.out.println("Now you have " + tasks.size() + " in your list :)");
+                    System.out.println("Now you have " + taskList.getSize() + " in your list :)");
                     System.out.println("___________________________________________________");
-                    saveTasks(storage, tasks);
+                    taskList.saveTasks(storage);
                     break;
                 case TODO:
                     if (entries.length < 2) {
@@ -94,33 +94,33 @@ public class Jerry {
                     }
                     TodoCommand todoCommand = new TodoCommand(entries[1]);
                     ToDo toDo = todoCommand.run();
-                    tasks.add(toDo);
+                    taskList.addTask(toDo);
                     System.out.println("Great! New task added: " + toDo);
-                    System.out.println("Now you have " + tasks.size() + " in your list :)");
+                    System.out.println("Now you have " + taskList.getSize() + " in your list :)");
                     System.out.println("___________________________________________________");
-                    saveTasks(storage, tasks);
+                    taskList.saveTasks(storage);
                     break;
                 case MARK:
-                    int markIdx = checkIndex(entries, tasks.size());
-                    tasks.get(markIdx).mark();
-                    System.out.println("Yay! One task down: " + tasks.get(markIdx));
+                    int markIdx = checkIndex(entries, taskList.getSize());
+                    taskList.get(markIdx).mark();
+                    System.out.println("Yay! One task down: " + taskList.get(markIdx));
                     System.out.println("___________________________________________________");
-                    saveTasks(storage, tasks);
+                    taskList.saveTasks(storage);
                     break;
                 case UNMARK:
-                    int unmarkIdx = checkIndex(entries, tasks.size());
-                    tasks.get(unmarkIdx).unmark();
-                    System.out.println("Noted! I've marked this task as undone: " + tasks.get(unmarkIdx));
+                    int unmarkIdx = checkIndex(entries, taskList.getSize());
+                    taskList.get(unmarkIdx).unmark();
+                    System.out.println("Noted! I've marked this task as undone: " + taskList.get(unmarkIdx));
                     System.out.println("___________________________________________________");
-                    saveTasks(storage, tasks);
+                    taskList.saveTasks(storage);
                     break;
                 case DELETE:
-                    int delIdx = checkIndex(entries, tasks.size());
-                    System.out.println("Noted! I've marked this task as deleted: " + tasks.get(delIdx));
-                    tasks.remove(delIdx);
-                    System.out.println("Now you have " + tasks.size() + " in your list :)");
+                    int delIdx = checkIndex(entries, taskList.getSize());
+                    System.out.println("Noted! I've marked this task as deleted: " + taskList.get(delIdx));
+                    taskList.delete(delIdx);
+                    System.out.println("Now you have " + taskList.getSize() + " in your list :)");
                     System.out.println("___________________________________________________");
-                    saveTasks(storage, tasks);
+                    taskList.saveTasks(storage);
                     break;
 
                 }
@@ -143,18 +143,6 @@ public class Jerry {
             return idx;
         } catch (NumberFormatException e) {
             throw new JerryException("Task.Task number must be a positive integer!");
-        }
-    }
-
-    private static void saveTasks(Storage storage, ArrayList<Task> task) {
-        StringBuilder sb = new StringBuilder();
-        for (Task t : task) {
-            sb.append(t.toFileString()).append("\n");
-        }
-        try {
-            storage.writeToFile(sb.toString());
-        } catch (JerryException e) {
-            System.out.println(e.getMessage());
         }
     }
 

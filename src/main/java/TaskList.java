@@ -73,7 +73,7 @@ public class TaskList {
         taskList.get(taskIndex).unmark();
     }
 
-    public int listSize() {
+    public int getSize() {
         return taskList.size();
     }
 
@@ -81,7 +81,7 @@ public class TaskList {
         return new ArrayList<>(taskList);
     }
 
-    private void saveTasks(Storage storage) {
+    public void saveTasks(Storage storage) {
         StringBuilder sb = new StringBuilder();
         for (Task t : taskList) {
             sb.append(t.toFileString()).append("\n");
