@@ -10,11 +10,11 @@ import ui.Ui;
 
 public class EventCommand extends Command {
 
-    private String desc = "";
-    private String fromDate = "";
-    private String fromTime = "";
-    private String toDate  = "";
-    private String toTime = "";
+    private final String desc;
+    private final String fromDate;
+    private final String fromTime;
+    private final String toDate;
+    private final String toTime;
 
     public EventCommand(String desc) throws InvalidCommandFormatException {
         String trimmed = desc.trim();
