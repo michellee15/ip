@@ -1,19 +1,18 @@
-package tasklist;
+package jerry.tasklist;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import exceptions.JerryException;
-import exceptions.ListIndexOutOfBoundException;
-import storage.Storage;
-import task.Deadline;
-import task.Event;
-import task.ToDo;
-import task.Task;
+import jerry.exceptions.JerryException;
+import jerry.exceptions.ListIndexOutOfBoundException;
+import jerry.storage.Storage;
+import jerry.task.Deadline;
+import jerry.task.Event;
+import jerry.task.ToDo;
+import jerry.task.Task;
 
 public class TaskList {
     private static final List<Task> taskList = new ArrayList<>();

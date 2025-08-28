@@ -1,8 +1,18 @@
-package parser;
+package jerry.parser;
 
-import command.*;
-import exceptions.InvalidCommandException;
-import exceptions.JerryException;
+import jerry.exceptions.InvalidCommandException;
+import jerry.exceptions.JerryException;
+
+import jerry.command.ByeCommand;
+import jerry.command.Command;
+import jerry.command.CommandEnum;
+import jerry.command.DeadlineCommand;
+import jerry.command.DeleteCommand;
+import jerry.command.EventCommand;
+import jerry.command.ListCommand;
+import jerry.command.MarkCommand;
+import jerry.command.TodoCommand;
+import jerry.command.UnmarkCommand;
 
 public class Parser {
 

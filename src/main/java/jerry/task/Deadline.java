@@ -1,6 +1,6 @@
-package task;
+package jerry.task;
 
-import exceptions.InvalidCommandFormatException;
+import jerry.exceptions.InvalidCommandFormatException;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

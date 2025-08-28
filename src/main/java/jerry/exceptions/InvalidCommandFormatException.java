@@ -1,4 +1,4 @@
-package exceptions;
+package jerry.exceptions;
 
 public class InvalidCommandFormatException extends JerryException {
     public InvalidCommandFormatException(String message) {

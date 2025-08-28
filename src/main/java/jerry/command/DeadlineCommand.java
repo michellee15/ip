@@ -1,11 +1,12 @@
-package command;
+package jerry.command;
 
-import exceptions.InvalidCommandFormatException;
-import exceptions.JerryException;
-import storage.Storage;
-import task.Deadline;
-import tasklist.TaskList;
-import ui.Ui;
+import jerry.exceptions.InvalidCommandFormatException;
+import jerry.exceptions.JerryException;
+import org.jetbrains.annotations.NotNull;
+import jerry.storage.Storage;
+import jerry.task.Deadline;
+import jerry.tasklist.TaskList;
+import jerry.ui.Ui;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -24,7 +25,7 @@ public class DeadlineCommand extends Command {
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
         String trimmed = desc.trim();
         if (!trimmed.toLowerCase().startsWith("deadline")) {
-            throw new InvalidCommandFormatException("Deadline command must start with 'deadline'!");
+            throw new InvalidCommandFormatException("Deadline jerry.command must start with 'deadline'!");
         }
         String withoutCommand = trimmed.substring(8).trim();
         if (withoutCommand.isEmpty()) {
@@ -33,6 +34,14 @@ public class DeadlineCommand extends Command {
         if (!withoutCommand.contains("/by")) {
             throw new InvalidCommandFormatException("Deadline must have '/by' keyword followed by the due date");
         }
+        Deadline deadline = getDeadline(withoutCommand);
+        this.response = taskList.addTask(deadline);
+        taskList.saveTasks(storage);
+        ui.displayOutput(this.response);
+    }
+
+    @NotNull
+    private static Deadline getDeadline(String withoutCommand) throws InvalidCommandFormatException {
         String[] parts = withoutCommand.split("/by", 2);
         String input = parts[0].trim();
         String dateString = parts[1].trim();
@@ -46,10 +55,7 @@ public class DeadlineCommand extends Command {
             throw new InvalidCommandFormatException("Invalid date/time format. " +
                     "Expected format: yyyy-MM-dd HH:mm (e.g., 2025-08-27 18:00)");
         }
-        Deadline deadline = new Deadline(input, dueDate);
-        this.response = taskList.addTask(deadline);
-        taskList.saveTasks(storage);
-        ui.displayOutput(this.response);
+        return new Deadline(input, dueDate);
     }
 
     @Override

@@ -1,10 +1,10 @@
-package ui;
+package jerry.ui;
 
 import java.util.Scanner;
 
-import exceptions.JerryException;
-import tasklist.TaskList;
-import task.Task;
+import jerry.exceptions.JerryException;
+import jerry.tasklist.TaskList;
+import jerry.task.Task;
 
 public class Ui {
 

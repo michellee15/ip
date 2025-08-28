@@ -1,4 +1,4 @@
-package command;
+package jerry.command;
 
 public enum CommandEnum {
     BYE,

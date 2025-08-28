@@ -1,10 +1,10 @@
-package command;
+package jerry.command;
 
-import exceptions.JerryException;
+import jerry.exceptions.JerryException;
 
-import storage.Storage;
-import tasklist.TaskList;
-import ui.Ui;
+import jerry.storage.Storage;
+import jerry.tasklist.TaskList;
+import jerry.ui.Ui;
 
 
 public class ByeCommand extends Command {
