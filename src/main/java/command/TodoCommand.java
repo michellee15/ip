@@ -11,12 +11,15 @@ public class TodoCommand extends Command {
     private String desc = "";
 
     public TodoCommand(String desc) throws InvalidCommandFormatException {
-        try {
-            String[] strArray = desc.split("/from");
-            this.desc = strArray[0].trim();
-        } catch (Exception e) {
-            throw new InvalidCommandFormatException("Event must have time in 'from-to' format");
+        String trimmed = desc.trim();
+        if (trimmed.toLowerCase().startsWith("todo")) {
+            trimmed = trimmed.substring(4).trim();
         }
+        if (trimmed.isEmpty()) {
+            throw new InvalidCommandFormatException("You forgot to describe what your tood is...");
+        }
+        this.desc = trimmed;
+
     }
 
     @Override

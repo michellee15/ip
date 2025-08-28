@@ -23,16 +23,21 @@ public class DeadlineCommand extends Command {
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
         String trimmed = desc.trim();
-//        if (trimmed.toLowerCase().startsWith("deadline ")) {
-//            trimmed = trimmed.substring(9).trim();
-//        }
-        if (!trimmed.contains("/by")) {
-            throw new InvalidCommandFormatException("Deadline must have '/by' keyword followed by due date");
+        if (!trimmed.toLowerCase().startsWith("deadline")) {
+            throw new InvalidCommandFormatException("Deadline command must start with 'deadline'!");
         }
-        String input = trimmed.substring(0, trimmed.indexOf("/by")).trim();
-        String dateString = trimmed.substring(trimmed.indexOf("/by") + 3).trim();
+        String withoutCommand = trimmed.substring(8).trim();
+        if (withoutCommand.isEmpty()) {
+            throw new InvalidCommandFormatException("Description and due date cannot be empty.");
+        }
+        if (!withoutCommand.contains("/by")) {
+            throw new InvalidCommandFormatException("Deadline must have '/by' keyword followed by the due date");
+        }
+        String[] parts = withoutCommand.split("/by", 2);
+        String input = parts[0].trim();
+        String dateString = parts[1].trim();
         if (input.isEmpty() || dateString.isEmpty()) {
-            throw new InvalidCommandFormatException("Uh Oh! Description and due date cannot be empty.");
+            throw new InvalidCommandFormatException("Description and due date cannot be empty...");
         }
         LocalDateTime dueDate;
         try {
@@ -41,7 +46,7 @@ public class DeadlineCommand extends Command {
             throw new InvalidCommandFormatException("Invalid date/time format. " +
                     "Expected format: yyyy-MM-dd HH:mm (e.g., 2025-08-27 18:00)");
         }
-        Deadline deadline = new Deadline(desc, dueDate);
+        Deadline deadline = new Deadline(input, dueDate);
         this.response = taskList.addTask(deadline);
         taskList.saveTasks(storage);
         ui.displayOutput(this.response);

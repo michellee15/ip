@@ -15,7 +15,7 @@ public class DeleteCommand extends Command {
             throw new InvalidCommandFormatException("Task number must be positive!");
         }
         try {
-            index = Integer.parseInt(entries[1]) - 1;
+            index = Integer.parseInt(entries[1]);
         } catch (NumberFormatException e) {
             throw new InvalidCommandFormatException("Task number must be positive!");
         }
