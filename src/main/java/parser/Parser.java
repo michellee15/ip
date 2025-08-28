@@ -1,8 +1,17 @@
 package parser;
 
-import command.*;
 import exceptions.InvalidCommandException;
 import exceptions.JerryException;
+import command.ByeCommand;
+import command.Command;
+import command.CommandEnum;
+import command.DeadlineCommand;
+import command.DeleteCommand;
+import command.EventCommand;
+import command.ListCommand;
+import command.MarkCommand;
+import command.TodoCommand;
+import command.UnmarkCommand;
 
 public class Parser {
 
