@@ -17,17 +17,7 @@ public class EventCommand extends Command {
     private final String toTime;
 
     public EventCommand(String desc) throws InvalidCommandFormatException {
-        String trimmed = desc.trim();
-        if (trimmed.toLowerCase().startsWith("event")) {
-            trimmed = trimmed.substring(5).trim();
-        }
-        if (trimmed.isEmpty() || trimmed.startsWith("/from")) {
-            throw new InvalidCommandFormatException("Event description cannot be empty...");
-        }
-        String[] strArray = trimmed.split("/from");
-        if (strArray.length < 2) {
-            throw new InvalidCommandFormatException("Event must have '/from' and 'to' keywords.");
-        }
+        String[] strArray = getStrings(desc);
         this.desc = strArray[0].trim();
         String[] dateData = strArray[1].split("to");
         String from = dateData[0];
@@ -42,6 +32,21 @@ public class EventCommand extends Command {
         this.fromTime = fromDateTime[1].trim();
         this.toDate  = toDateTime[0].trim();
         this.toTime = toDateTime[1].trim();
+    }
+
+    private static String[] getStrings(String desc) throws InvalidCommandFormatException {
+        String trimmed = desc.trim();
+        if (trimmed.toLowerCase().startsWith("event")) {
+            trimmed = trimmed.substring(5).trim();
+        }
+        if (trimmed.isEmpty() || trimmed.startsWith("/from")) {
+            throw new InvalidCommandFormatException("Event description cannot be empty...");
+        }
+        String[] strArray = trimmed.split("/from");
+        if (strArray.length < 2) {
+            throw new InvalidCommandFormatException("Event must have '/from' and 'to' keywords.");
+        }
+        return strArray;
     }
 
     @Override

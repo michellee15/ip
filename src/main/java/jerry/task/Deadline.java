@@ -12,15 +12,19 @@ public class Deadline extends Task {
     private static final DateTimeFormatter DISPLAY_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm");
 
 
-    public Deadline(String desc, LocalDateTime dueDate) throws InvalidCommandFormatException {
+    public Deadline(String desc, String dateString) throws InvalidCommandFormatException {
        super(desc);
-       this.dueDate = dueDate;
+       try {
+            dueDate = LocalDateTime.parse(dateString, FILE_FORMATTER);
+       } catch (DateTimeParseException e) {
+           throw new InvalidCommandFormatException("Invalid date/time format. " +
+                    "Expected format: yyyy-MM-dd HH:mm (e.g., 2025-08-27 18:00)");
+       }
     }
 
     public static Deadline fromFile(String desc, String dateString) throws InvalidCommandFormatException {
         try {
-            LocalDateTime dueDate = LocalDateTime.parse(dateString, FILE_FORMATTER);
-            return new Deadline(desc, dueDate);
+            return new Deadline(desc, dateString);
         } catch (DateTimeParseException e) {
             throw new InvalidCommandFormatException("Unable to load deadline task: " + dateString);
         }

@@ -16,7 +16,7 @@ public class TodoCommand extends Command {
             trimmed = trimmed.substring(4).trim();
         }
         if (trimmed.isEmpty()) {
-            throw new InvalidCommandFormatException("You forgot to describe what your tood is...");
+            throw new InvalidCommandFormatException("You forgot to describe what your todo is...");
         }
         this.desc = trimmed;
 

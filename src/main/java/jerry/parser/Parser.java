@@ -17,7 +17,7 @@ import jerry.command.UnmarkCommand;
 public class Parser {
 
     public static Command parse(String input) throws JerryException {
-        String[] entries = input.split(" ", 2);
+        String[] entries = input.trim().split(" ", 2);
         CommandEnum command;
         try {
             command = CommandEnum.valueOf(entries[0].trim().toUpperCase());

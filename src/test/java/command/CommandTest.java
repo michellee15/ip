@@ -2,6 +2,11 @@ package command;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import jerry.exceptions.JerryException;
+import jerry.storage.Storage;
+import jerry.tasklist.TaskList;
+import jerry.ui.Ui;
 import org.junit.jupiter.api.Test;
 
 import jerry.command.DeadlineCommand;
@@ -14,78 +19,85 @@ import jerry.command.UnmarkCommand;
 import jerry.exceptions.InvalidCommandFormatException;
 
 public class CommandTest {
+    final private TaskList TASKLIST = new TaskList();
+    final private Ui UI = new Ui();
+    final private Storage STORAGE = new Storage("");
+
     @Test
-    public void createTodoCommand_wrongInput_exceptionThrown() {
+    public void TodoCommand_wrongInput_exceptionThrown() {
         try {
             assertEquals(2, new TodoCommand("todo "));
             fail();
         } catch (InvalidCommandFormatException error) {
-            assertEquals("You must specify the task in the format: <task>", error.getMessage());
+            assertEquals("You forgot to describe what your todo is...", error.getMessage());
         }
     }
 
     @Test
-    public void createDeadlineCommand_wrongInput_exceptionThrown() {
-        assertEquals(2, new DeadlineCommand("deadline test"));
-        fail();
-    }
-
-    @Test
-    public void createEventCommand_wrongInput_exceptionThrown() {
+    public void DeadlineCommand_wrongInput_exceptionThrown() {
         try {
-            assertEquals(2, new EventCommand("event test /from test"));
-            fail();
-        } catch (InvalidCommandFormatException error) {
-            assertEquals("Invalid format. Use: <task> /from <start> /to <end>", error.getMessage());
+            DeadlineCommand deadlineCommand = new DeadlineCommand("deadline test");
+            deadlineCommand.execute(TASKLIST, UI, STORAGE);
+        } catch (JerryException error) {
+            assertEquals("Deadline must have '/by' keyword followed by the due date", error.getMessage());
         }
     }
 
     @Test
-    public void createDeleteCommand_wrongInput_exceptionThrown() {
+    public void EventCommand_wrongInput_exceptionThrown() {
+        try {
+            EventCommand eventCommand = new EventCommand("event test from test");
+            eventCommand.execute(TASKLIST, UI, STORAGE);
+        } catch (JerryException error) {
+            assertEquals("Event must have '/from' and 'to' keywords.", error.getMessage());
+        }
+    }
+
+    @Test
+    public void DeleteCommand_wrongInput_exceptionThrown() {
         try {
             assertEquals(0, new DeleteCommand("delete test"));
-            fail();
-        } catch (InvalidCommandFormatException error) {
-            assertEquals("The position must be a valid integer.", error.getMessage());
+        } catch (JerryException error) {
+            assertEquals("Task number must be positive!", error.getMessage());
         }
     }
 
     @Test
-    public void createMarkCommand_wrongInput_exceptionThrown() {
+    public void MarkCommand_wrongInput_exceptionThrown() {
         try {
             assertEquals(0, new MarkCommand("mark test"));
             fail();
         } catch (InvalidCommandFormatException error) {
-            assertEquals("The position must be a valid integer.", error.getMessage());
+            assertEquals("Task number must be positive!", error.getMessage());
         }
     }
 
     @Test
-    public void createMarkCommand_wrongInput2_exceptionThrown() {
+    public void MarkCommand_wrongInput2_exceptionThrown() {
         try {
             assertEquals(0, new MarkCommand("mark"));
             fail();
         } catch (InvalidCommandFormatException error) {
-            assertEquals("You must specify the position of the task to mark.", error.getMessage());
+            assertEquals("Task number must be positive!", error.getMessage());
         }
     }
     @Test
-    public void createUnmarkCommand_wrongInput_exceptionThrown() {
+    public void UnmarkCommand_wrongInput_exceptionThrown() {
         try {
             assertEquals(0, new UnmarkCommand("mark test"));
             fail();
         } catch (InvalidCommandFormatException error) {
-            assertEquals("The position must be a valid integer.", error.getMessage());
+            assertEquals("Task number must be positive!", error.getMessage());
         }
     }
 
     @Test
-    public void createUnmarkCommand_wrongInput2_exceptionThrown() {
+    public void UnmarkCommand_wrongInput2_exceptionThrown() {
         try {
             assertEquals(0, new UnmarkCommand("mark"));
             fail();
         } catch (InvalidCommandFormatException error) {
-            assertEquals("You must specify the position of the task to mark.", error.getMessage());
+            assertEquals("Task number must be positive!", error.getMessage());
         }
     }
 }
