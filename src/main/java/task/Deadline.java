@@ -22,7 +22,7 @@ public class Deadline extends Task {
             LocalDateTime dueDate = LocalDateTime.parse(dateString, FILE_FORMATTER);
             return new Deadline(desc, dueDate);
         } catch (DateTimeParseException e) {
-            throw new InvalidCommandFormatException("Corrupted deadline in save file: " + dateString);
+            throw new InvalidCommandFormatException("Unable to load deadline task: " + dateString);
         }
     }
 

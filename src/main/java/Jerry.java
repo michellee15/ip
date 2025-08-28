@@ -1,20 +1,16 @@
-import exceptions.InvalidCommandException;
-import exceptions.InvalidCommandFormatException;
+import command.Command;
 import exceptions.JerryException;
 
+import parser.Parser;
 import storage.Storage;
 import tasklist.TaskList;
-
-
-import java.io.File;
-import java.util.Scanner;
+import ui.Ui;
 
 public class Jerry {
 
     private TaskList taskList;
     private final Storage storage;
     private final Ui ui;
-    private String type = "";
 
     public Jerry(String filePath) {
         ui = new Ui();

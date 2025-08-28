@@ -1,7 +1,9 @@
+package command;
 
 import exceptions.JerryException;
 import storage.Storage;
 import tasklist.TaskList;
+import ui.Ui;
 
 public abstract class Command {
     protected String response;

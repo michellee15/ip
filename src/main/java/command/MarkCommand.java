@@ -1,19 +1,22 @@
+package command;
+
 import exceptions.InvalidCommandFormatException;
 import exceptions.JerryException;
 import storage.Storage;
 import tasklist.TaskList;
+import ui.Ui;
 
-public class UnmarkCommand extends Command {
+public class MarkCommand extends Command {
 
     private int index = 0;
 
-    public UnmarkCommand(String input) throws InvalidCommandFormatException {
+    public MarkCommand(String input) throws InvalidCommandFormatException {
         String[] entries = input.split(" ", 2);
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
             throw new InvalidCommandFormatException("Task number must be positive!");
         }
         try {
-            index = Integer.parseInt(entries[1]) - 1;
+            index = Integer.parseInt(entries[1]);
         } catch (NumberFormatException e) {
             throw new InvalidCommandFormatException("Task number must be positive!");
         }
@@ -21,8 +24,8 @@ public class UnmarkCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
-        this.response = taskList.unmark(index);
-        storage.writeToFile(taskList.toString());
+        this.response = taskList.mark(index);
+        taskList.saveTasks(storage);
         ui.displayOutput(this.response);
     }
 

@@ -1,10 +1,13 @@
+package command;
+
 import exceptions.InvalidCommandFormatException;
 import exceptions.JerryException;
 import storage.Storage;
 import tasklist.TaskList;
 import task.ToDo;
+import ui.Ui;
 
-public class TodoCommand extends Command{
+public class TodoCommand extends Command {
     private String desc = "";
 
     public TodoCommand(String desc) throws InvalidCommandFormatException {
@@ -20,7 +23,7 @@ public class TodoCommand extends Command{
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
         ToDo todo = new ToDo(desc);
         this.response = taskList.addTask(todo);
-        storage.writeToFile(taskList.toString());
+        taskList.saveTasks(storage);
         ui.displayOutput(this.response);
     }
 

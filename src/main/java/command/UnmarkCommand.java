@@ -1,18 +1,22 @@
+package command;
+
 import exceptions.InvalidCommandFormatException;
 import exceptions.JerryException;
 import storage.Storage;
 import tasklist.TaskList;
+import ui.Ui;
 
-public class DeleteCommand extends Command {
+public class UnmarkCommand extends Command {
+
     private int index = 0;
 
-    public DeleteCommand(String input) throws InvalidCommandFormatException {
+    public UnmarkCommand(String input) throws InvalidCommandFormatException {
         String[] entries = input.split(" ", 2);
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
             throw new InvalidCommandFormatException("Task number must be positive!");
         }
         try {
-            index = Integer.parseInt(entries[1]) - 1;
+            index = Integer.parseInt(entries[1]);
         } catch (NumberFormatException e) {
             throw new InvalidCommandFormatException("Task number must be positive!");
         }
@@ -20,8 +24,8 @@ public class DeleteCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
-        this.response = taskList.deleteTask(index);
-        storage.writeToFile(taskList.toString());
+        this.response = taskList.unmark(index);
+        taskList.saveTasks(storage);
         ui.displayOutput(this.response);
     }
 

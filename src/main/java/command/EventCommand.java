@@ -1,11 +1,14 @@
+package command;
+
 import exceptions.InvalidCommandFormatException;
 import exceptions.JerryException;
 
 import task.Event;
 import tasklist.TaskList;
 import storage.Storage;
+import ui.Ui;
 
-public class EventCommand extends Command{
+public class EventCommand extends Command {
 
     private String desc = "";
     private String fromDate = "";
@@ -35,7 +38,7 @@ public class EventCommand extends Command{
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
         Event event = new Event(desc, fromDate, fromTime, toDate, toTime);
         this.response = taskList.addTask(event);
-        storage.writeToFile(taskList.toString());
+        taskList.saveTasks(storage);
         ui.displayOutput(this.response);
     }
 

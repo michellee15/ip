@@ -1,5 +1,7 @@
+package parser;
+
+import command.*;
 import exceptions.InvalidCommandException;
-import exceptions.InvalidCommandFormatException;
 import exceptions.JerryException;
 
 public class Parser {

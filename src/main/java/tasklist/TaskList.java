@@ -48,7 +48,9 @@ public class TaskList {
                     String desc = details[2].trim();
                     String[] fromDateTime = details[3].trim().split(" ");
                     String[] toDateTime = details[4].trim().split(" ");
-                    taskList.add(new Event(desc, fromDateTime[0], fromDateTime[1], toDateTime[0], toDateTime[1]));
+                    Event event = new Event(desc, fromDateTime[0], fromDateTime[1], toDateTime[0], toDateTime[1]);
+                    if (details[1].trim().equals("1")) event.mark();
+                    taskList.add(event);
                     break;
                 }
             }
@@ -131,4 +133,10 @@ public class TaskList {
             System.out.println(e.getMessage());
         }
     }
+
+    @Override
+    public String toString(){
+        return getList();
+    }
+
 }
