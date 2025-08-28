@@ -6,6 +6,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * The Storage class is responsible for managing task data.
+ * It handles reading from and writing to file on the file system, managing the storage
+ * and retrieval of task-related information in the Jerry application.
+ */
 public class Storage {
     private final String filePath;
 
@@ -13,6 +18,13 @@ public class Storage {
         this.filePath = filePath;
     }
 
+    /**
+     * Loads the task file from the specified file path.
+     * If the file does not exist, it creates a new file in the default data directory.
+     *
+     * @return file object representing the loaded or created file.
+     * @throws JerryException if an error occurs during the loading of file.
+     */
     public File load() throws JerryException {
         try {
             File file = new File(filePath);
@@ -32,6 +44,12 @@ public class Storage {
         }
     }
 
+    /**
+     * Writes the current string data to the file in the specified file path.
+     *
+     * @param data string data representing the current state of tasks.
+     * @throws JerryException if writing to the file fails.
+     */
     public void writeToFile(String data) throws JerryException {
         try (FileWriter fileWriter = new FileWriter(filePath)) {
             fileWriter.write(data);
