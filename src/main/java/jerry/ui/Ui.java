@@ -30,21 +30,11 @@ public class Ui {
     }
 
     public void showError(String message) {
-        System.out.println("Uh Oh! " + message);
+        System.out.println("Oops! " + message);
     }
 
     public void showExit() {
         System.out.println("Bye! See you next time :D");
-    }
-
-    public void showAdded(Task task, int size) {
-        System.out.println("Nice! This task has been added to the list:\n" + task);
-        System.out.println("Now you have " + size + " in your list :)");
-    }
-
-    public void showDeleted(Task task, int size) {
-        System.out.println("Noted! I've marked this task as deleted: " + task);
-        System.out.println("Now you have " + size + " in your list :)");
     }
 
     public void showMarked(Task task) {
@@ -56,7 +46,7 @@ public class Ui {
     }
 
     public void showLoadingError() {
-        System.out.println("Oops! Failed to load resources. Please try again!");
+        System.out.println("Failed to load resources. Please try again!");
     }
 
     public void showTaskList(TaskList taskList) throws JerryException {

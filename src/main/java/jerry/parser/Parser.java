@@ -17,12 +17,12 @@ import jerry.command.UnmarkCommand;
 public class Parser {
 
     public static Command parse(String input) throws JerryException {
-        String[] entries = input.split(" ", 2);
+        String[] entries = input.trim().split(" ", 2);
         CommandEnum command;
         try {
             command = CommandEnum.valueOf(entries[0].trim().toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new InvalidCommandException("Sorry! I don't understand what you mean by: " + input +
+            throw new InvalidCommandException("I don't understand what you mean by: " + input +
                     "\nUse these commands at the start of your sentence instead: " +
                     "bye/list/todo/deadline/event/mark/unmark/delete");
         }

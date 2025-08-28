@@ -72,7 +72,7 @@ public class TaskList {
         if (taskIndex < 0) {
             throw new ListIndexOutOfBoundException("Task number must be positive.");
         } else if (taskIndex > this.getSize()) {
-            throw new ListIndexOutOfBoundException("Oops! You only have " + this.getSize() + " tasks in the list.");
+            throw new ListIndexOutOfBoundException("You only have " + this.getSize() + " tasks in the list.");
         }
         Task task = taskList.remove(taskIndex - 1);
         return "Noted! I've marked this task as deleted:\n" + task.toString() +
@@ -101,7 +101,7 @@ public class TaskList {
         if (taskIndex <= 0) {
             throw new ListIndexOutOfBoundException("Task number must be positive.");
         } else if (taskIndex > this.getSize()) {
-            throw new ListIndexOutOfBoundException("Oops! You only have \" + this.getSize() + \" tasks in the list.");
+            throw new ListIndexOutOfBoundException("You only have " + this.getSize() + " tasks in the list.");
         }
         taskList.get(taskIndex - 1).mark();
         return "Yay! One task down:\n" + taskList.get(taskIndex - 1).toString();
@@ -111,7 +111,7 @@ public class TaskList {
         if (taskIndex <= 0) {
             throw new ListIndexOutOfBoundException("Task number must be positive.");
         } else if (taskIndex > this.getSize()) {
-            throw new ListIndexOutOfBoundException("Oops! You only have \" + this.getSize() + \" tasks in the list.");
+            throw new ListIndexOutOfBoundException("You only have " + this.getSize() + " tasks in the list.");
         }
         taskList.get(taskIndex - 1).unmark();
         return "Noted! I've marked this task as undone:\n" + taskList.get(taskIndex - 1).toString();
