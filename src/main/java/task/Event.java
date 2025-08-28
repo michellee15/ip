@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 
-public class Events extends Task {
+public class Event extends Task {
     private final LocalDate fromDate;
     private final LocalTime fromTime;
     private final LocalDate toDate;
@@ -17,7 +17,7 @@ public class Events extends Task {
     private static final DateTimeFormatter DISPLAY_DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
-    public Events(String desc, String fromDate, String fromTime, String toDate, String toTime) throws InvalidCommandFormatException {
+    public Event(String desc, String fromDate, String fromTime, String toDate, String toTime) throws InvalidCommandFormatException {
         super(desc);
         try {
             this.fromDate = LocalDate.parse(fromDate, FILE_DATE_FORMATTER);
@@ -26,24 +26,6 @@ public class Events extends Task {
             this.toTime = LocalTime.parse(toTime, TIME_FORMATTER);
         } catch (DateTimeParseException e) {
             throw new InvalidCommandFormatException("Invalid date format! Expected format: yyyy-MM-dd, e.g., 2022-08-06");
-        }
-    }
-
-    private static LocalTime parseTime(String input) throws DateTimeParseException {
-        input = input.toLowerCase().replaceAll("\\s+", "");
-
-        try {
-            return LocalTime.parse(input, TIME_FORMATTER);
-        } catch (DateTimeParseException e) {
-            boolean isPm = input.endsWith("pm");
-            boolean isAm = input.endsWith("am");
-            String numberPart = input.replaceAll("(am|pm)", "");
-            String[] parts = numberPart.split(":");
-            int hour = Integer.parseInt(parts[0]);
-            int min = parts.length > 1 ? Integer.parseInt(parts[1]) : 0;
-            if (isPm && hour < 12) hour += 12;
-            if (isAm && hour == 12) hour = 0;
-            return LocalTime.of(hour, min);
         }
     }
 

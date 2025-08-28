@@ -12,36 +12,18 @@ public class Deadline extends Task {
     private static final DateTimeFormatter DISPLAY_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm");
 
 
-    public Deadline(String desc) throws InvalidCommandFormatException {
-       super(parseDesc(desc));
-       String date = parseDate(desc);
-       try {
-           this.dueDate = LocalDateTime.parse(date, FILE_FORMATTER);
-       } catch (DateTimeParseException e) {
-           throw new InvalidCommandFormatException("Uh Oh! Invalid date/time format, use yyyy-MM-dd hour and min (eg. 2019-10-05 18:00)");
-       }
+    public Deadline(String desc, LocalDateTime dueDate) throws InvalidCommandFormatException {
+       super(desc);
+       this.dueDate = dueDate;
     }
 
-    private static String parseDesc(String desc) throws InvalidCommandFormatException {
-        if (desc.toLowerCase().startsWith("deadline ")) {
-            desc = desc.substring(9).trim();
+    public static Deadline fromFile(String desc, String dateString) throws InvalidCommandFormatException {
+        try {
+            LocalDateTime dueDate = LocalDateTime.parse(dateString, FILE_FORMATTER);
+            return new Deadline(desc, dueDate);
+        } catch (DateTimeParseException e) {
+            throw new InvalidCommandFormatException("Unable to load deadline task: " + dateString);
         }
-        if (!desc.contains("/by")) {
-            throw new InvalidCommandFormatException("Task.Deadline must have '/by' keyword followed by due date");
-        }
-        String taskDesc = desc.substring(0, desc.indexOf("/by")).trim();
-        if (taskDesc.isEmpty()) {
-            throw new InvalidCommandFormatException("Uh Oh! You forgot to describe your task and due date!");
-        }
-        return taskDesc;
-    }
-
-    private static String parseDate(String desc) throws InvalidCommandFormatException {
-        if (!desc.contains("/by")) throw new InvalidCommandFormatException(
-                "Uh Oh! Task.Deadline must have a due date or time");
-        String by = desc.substring(desc.indexOf("/by") + 3).trim();
-        if (by.isEmpty()) throw new InvalidCommandFormatException("The due date or time cannot be empty!");
-        return by;
     }
 
     @Override
