@@ -1,6 +1,6 @@
-package task;
+package jerry.task;
 
-import exceptions.InvalidCommandFormatException;
+import jerry.exceptions.InvalidCommandFormatException;
 
 public abstract class Task {
     protected String desc;
@@ -16,10 +16,6 @@ public abstract class Task {
 
     public String getStatus() {
         return this.isDone ? "X" : " ";
-    }
-
-    public String getDesc() {
-        return this.desc;
     }
 
     public void mark() {

@@ -1,16 +1,15 @@
-package command;
+package jerry.command;
 
-import exceptions.InvalidCommandFormatException;
-import exceptions.JerryException;
-import storage.Storage;
-import tasklist.TaskList;
-import ui.Ui;
+import jerry.exceptions.InvalidCommandFormatException;
+import jerry.exceptions.JerryException;
+import jerry.storage.Storage;
+import jerry.tasklist.TaskList;
+import jerry.ui.Ui;
 
-public class MarkCommand extends Command {
-
+public class DeleteCommand extends Command {
     private int index = 0;
 
-    public MarkCommand(String input) throws InvalidCommandFormatException {
+    public DeleteCommand(String input) throws InvalidCommandFormatException {
         String[] entries = input.split(" ", 2);
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
             throw new InvalidCommandFormatException("Task number must be positive!");
@@ -24,7 +23,7 @@ public class MarkCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
-        this.response = taskList.mark(index);
+        this.response = taskList.deleteTask(index);
         taskList.saveTasks(storage);
         ui.displayOutput(this.response);
     }

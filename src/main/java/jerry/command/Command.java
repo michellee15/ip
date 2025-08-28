@@ -1,9 +1,10 @@
-package command;
+package jerry.command;
 
-import exceptions.JerryException;
-import storage.Storage;
-import tasklist.TaskList;
-import ui.Ui;
+import jerry.exceptions.JerryException;
+
+import jerry.storage.Storage;
+import jerry.tasklist.TaskList;
+import jerry.ui.Ui;
 
 public abstract class Command {
     protected String response;

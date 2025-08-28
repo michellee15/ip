@@ -1,8 +1,8 @@
-package command;
+package jerry.command;
 
-import storage.Storage;
-import tasklist.TaskList;
-import ui.Ui;
+import jerry.storage.Storage;
+import jerry.tasklist.TaskList;
+import jerry.ui.Ui;
 
 public class ListCommand extends Command {
 

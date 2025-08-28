@@ -1,11 +1,11 @@
-package command;
+package jerry.command;
 
-import exceptions.InvalidCommandFormatException;
-import exceptions.JerryException;
-import storage.Storage;
-import tasklist.TaskList;
-import task.ToDo;
-import ui.Ui;
+import jerry.exceptions.InvalidCommandFormatException;
+import jerry.exceptions.JerryException;
+import jerry.storage.Storage;
+import jerry.tasklist.TaskList;
+import jerry.task.ToDo;
+import jerry.ui.Ui;
 
 public class TodoCommand extends Command {
     private final String desc;

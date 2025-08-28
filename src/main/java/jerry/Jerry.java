@@ -1,10 +1,12 @@
-import command.Command;
-import exceptions.JerryException;
+package jerry;
 
-import parser.Parser;
-import storage.Storage;
-import tasklist.TaskList;
-import ui.Ui;
+import jerry.command.Command;
+import jerry.exceptions.JerryException;
+
+import jerry.parser.Parser;
+import jerry.storage.Storage;
+import jerry.tasklist.TaskList;
+import jerry.ui.Ui;
 
 public class Jerry {
 

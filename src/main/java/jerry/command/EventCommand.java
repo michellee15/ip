@@ -1,12 +1,12 @@
-package command;
+package jerry.command;
 
-import exceptions.InvalidCommandFormatException;
-import exceptions.JerryException;
+import jerry.exceptions.InvalidCommandFormatException;
+import jerry.exceptions.JerryException;
 
-import task.Event;
-import tasklist.TaskList;
-import storage.Storage;
-import ui.Ui;
+import jerry.task.Event;
+import jerry.storage.Storage;
+import jerry.tasklist.TaskList;
+import jerry.ui.Ui;
 
 public class EventCommand extends Command {
 

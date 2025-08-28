@@ -1,32 +1,32 @@
 ___________________________________________________
-Hello, nice to meet you! I'm Jerry the mouse!
+Hello, nice to meet you! I'm jerry.Jerry the mouse!
 What can I do for you today?
 ___________________________________________________
 ___________________________________________________
-Great! New task added: [TODO][ ] buy groceries
+Great! New jerry.task added: [TODO][ ] buy groceries
 Now you have 1 in your list :)
 ___________________________________________________
 ___________________________________________________
-Nice! This task has been added to the list:
+Nice! This jerry.task has been added to the list:
 [DUE][ ] finish homework (by: Friday)
 Now you have 2 in your list :)
 ___________________________________________________
 ___________________________________________________
-Okay! I've added this to your task list:
+Okay! I've added this to your jerry.task list:
 [EVENT][ ] team outing(from: Sat 1pm to: 6pm)
 Now you have 3 in your list :)
 ___________________________________________________
 ___________________________________________________
-Great! New task added: [TODO][ ] clean room
+Great! New jerry.task added: [TODO][ ] clean room
 Now you have 4 in your list :)
 ___________________________________________________
 ___________________________________________________
-Okay! I've added this to your task list:
+Okay! I've added this to your jerry.task list:
 [EVENT][ ] project meeting(from: Mon 3pm to: 5pm)
 Now you have 5 in your list :)
 ___________________________________________________
 ___________________________________________________
-Your task list:
+Your jerry.task list:
 1. [TODO][ ] buy groceries
 2. [DUE][ ] finish homework (by: Friday)
 3. [EVENT][ ] team outing(from: Sat 1pm to: 6pm)
@@ -34,10 +34,10 @@ Your task list:
 5. [EVENT][ ] project meeting(from: Mon 3pm to: 5pm)
 ___________________________________________________
 ___________________________________________________
-Yay! One task down: [DUE][X] finish homework (by: Friday)
+Yay! One jerry.task down: [DUE][X] finish homework (by: Friday)
 ___________________________________________________
 ___________________________________________________
-Your task list:
+Your jerry.task list:
 1. [TODO][ ] buy groceries
 2. [DUE][X] finish homework (by: Friday)
 3. [EVENT][ ] team outing(from: Sat 1pm to: 6pm)
@@ -45,10 +45,10 @@ Your task list:
 5. [EVENT][ ] project meeting(from: Mon 3pm to: 5pm)
 ___________________________________________________
 ___________________________________________________
-Noted! I've marked this task as undone: [DUE][ ] finish homework (by: Friday)
+Noted! I've marked this jerry.task as undone: [DUE][ ] finish homework (by: Friday)
 ___________________________________________________
 ___________________________________________________
-Your task list:
+Your jerry.task list:
 1. [TODO][ ] buy groceries
 2. [DUE][ ] finish homework (by: Friday)
 3. [EVENT][ ] team outing(from: Sat 1pm to: 6pm)

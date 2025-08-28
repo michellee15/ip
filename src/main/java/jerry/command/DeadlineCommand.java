@@ -1,12 +1,12 @@
-package command;
+package jerry.command;
 
-import exceptions.InvalidCommandFormatException;
-import exceptions.JerryException;
+import jerry.exceptions.InvalidCommandFormatException;
+import jerry.exceptions.JerryException;
 import org.jetbrains.annotations.NotNull;
-import storage.Storage;
-import task.Deadline;
-import tasklist.TaskList;
-import ui.Ui;
+import jerry.storage.Storage;
+import jerry.task.Deadline;
+import jerry.tasklist.TaskList;
+import jerry.ui.Ui;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -25,7 +25,7 @@ public class DeadlineCommand extends Command {
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
         String trimmed = desc.trim();
         if (!trimmed.toLowerCase().startsWith("deadline")) {
-            throw new InvalidCommandFormatException("Deadline command must start with 'deadline'!");
+            throw new InvalidCommandFormatException("Deadline jerry.command must start with 'deadline'!");
         }
         String withoutCommand = trimmed.substring(8).trim();
         if (withoutCommand.isEmpty()) {

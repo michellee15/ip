@@ -1,6 +1,6 @@
-package storage;
+package jerry.storage;
 
-import exceptions.JerryException;
+import jerry.exceptions.JerryException;
 
 import java.io.File;
 import java.io.FileWriter;

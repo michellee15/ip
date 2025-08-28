@@ -1,6 +1,6 @@
-package task;
+package jerry.task;
 
-import exceptions.InvalidCommandFormatException;
+import jerry.exceptions.InvalidCommandFormatException;
 
 public class ToDo extends Task {
 
