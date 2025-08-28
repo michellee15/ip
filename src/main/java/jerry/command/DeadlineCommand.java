@@ -1,16 +1,16 @@
 package jerry.command;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 import jerry.exceptions.InvalidCommandFormatException;
 import jerry.exceptions.JerryException;
-import org.jetbrains.annotations.NotNull;
+
 import jerry.storage.Storage;
 import jerry.task.Deadline;
 import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 
 public class DeadlineCommand extends Command {
 
@@ -40,7 +40,6 @@ public class DeadlineCommand extends Command {
         ui.displayOutput(this.response);
     }
 
-    @NotNull
     private static Deadline getDeadline(String withoutCommand) throws InvalidCommandFormatException {
         String[] parts = withoutCommand.split("/by", 2);
         String input = parts[0].trim();
