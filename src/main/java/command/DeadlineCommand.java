@@ -2,6 +2,7 @@ package command;
 
 import exceptions.InvalidCommandFormatException;
 import exceptions.JerryException;
+import org.jetbrains.annotations.NotNull;
 import storage.Storage;
 import task.Deadline;
 import tasklist.TaskList;
@@ -33,6 +34,14 @@ public class DeadlineCommand extends Command {
         if (!withoutCommand.contains("/by")) {
             throw new InvalidCommandFormatException("Deadline must have '/by' keyword followed by the due date");
         }
+        Deadline deadline = getDeadline(withoutCommand);
+        this.response = taskList.addTask(deadline);
+        taskList.saveTasks(storage);
+        ui.displayOutput(this.response);
+    }
+
+    @NotNull
+    private static Deadline getDeadline(String withoutCommand) throws InvalidCommandFormatException {
         String[] parts = withoutCommand.split("/by", 2);
         String input = parts[0].trim();
         String dateString = parts[1].trim();
@@ -46,10 +55,7 @@ public class DeadlineCommand extends Command {
             throw new InvalidCommandFormatException("Invalid date/time format. " +
                     "Expected format: yyyy-MM-dd HH:mm (e.g., 2025-08-27 18:00)");
         }
-        Deadline deadline = new Deadline(input, dueDate);
-        this.response = taskList.addTask(deadline);
-        taskList.saveTasks(storage);
-        ui.displayOutput(this.response);
+        return new Deadline(input, dueDate);
     }
 
     @Override

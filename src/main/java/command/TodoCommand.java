@@ -8,7 +8,7 @@ import task.ToDo;
 import ui.Ui;
 
 public class TodoCommand extends Command {
-    private String desc = "";
+    private final String desc;
 
     public TodoCommand(String desc) throws InvalidCommandFormatException {
         String trimmed = desc.trim();
