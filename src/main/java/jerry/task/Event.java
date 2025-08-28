@@ -7,7 +7,14 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-
+/**
+ * Represents an event task in the Jerry application.
+ * <p>
+ * An Event is a type of Task that has specific
+ * time period with defined start and end dates and times.
+ * The class validates the input date and time strings and
+ * formats them appropriately for both file storage and user-friendly display.
+ */
 public class Event extends Task {
     private final LocalDate fromDate;
     private final LocalTime fromTime;
@@ -17,6 +24,16 @@ public class Event extends Task {
     private static final DateTimeFormatter DISPLAY_DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
+    /**
+     * Constructs an Event task with a description, start date/time, and end date/time.
+     *
+     * @param desc the description of the event.
+     * @param fromDate the start date in the format "yyyy-MM-dd".
+     * @param fromTime the start time in the format "HH:mm".
+     * @param toDate the end date in the format "yyyy-MM-dd".
+     * @param toTime the end time in the format "HH:mm".
+     * @throws InvalidCommandFormatException if any date or time string is invalid or incorrectly formatted.
+     */
     public Event(String desc, String fromDate, String fromTime, String toDate, String toTime) throws InvalidCommandFormatException {
         super(desc);
         try {

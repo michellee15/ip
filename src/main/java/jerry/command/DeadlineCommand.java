@@ -12,11 +12,26 @@ import jerry.task.Deadline;
 import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
 
+/**
+ * Represents a command to add a deadline task in the Jerry application
+ * <p>
+ * This class parses the user input and adds the task to the task list when executed.
+ * It ensures the input follows the expected syntax; starting with "deadline", and include
+ * a "/by" keyword followed by the due date.
+ */
 public class DeadlineCommand extends Command {
 
     private String desc;
     private String dateString;
 
+    /**
+     * Constructs a new DeadlineCommand by parsing the user  input which is expected to follow
+     * the format: "deadline task /by due date".
+     * An exception is thrown if the format is invalid or if the user missed out the task description.
+     *
+     * @param desc the user input string to be parsed.
+     * @throws InvalidCommandFormatException if the expected format is not followed.
+     */
     public DeadlineCommand(String desc) throws InvalidCommandFormatException {
         String trimmed = desc.trim();
         if (!trimmed.toLowerCase().startsWith("deadline")) {

@@ -14,6 +14,14 @@ import jerry.task.Event;
 import jerry.task.ToDo;
 import jerry.task.Task;
 
+/**
+ * Represents a collection of tasks in the Jerry application.
+ * <p>
+ * The TaskList manages a list of Task objects, providing
+ * functionality to add, remove, mark, unmark, retrieve, and save tasks.
+ * It also supports loading tasks from a file and generating user-friendly
+ * representations of the task list.
+ */
 public class TaskList {
     private static final List<Task> taskList = new ArrayList<>();
 
@@ -24,6 +32,12 @@ public class TaskList {
     public TaskList() {
     }
 
+    /**
+     * Loads tasks from the specified file and populates the internal task list.
+     *
+     * @param file the file containing saved tasks.
+     * @throws JerryException if tasks cannot be loaded due to file errors or format issues.
+     */
     private void loadTasks(File file) throws JerryException {
         try (Scanner sc = new Scanner(file)) {
             while (sc.hasNextLine()) {
@@ -58,6 +72,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Adds a task to the task list.
+     *
+     * @param task the task to add.
+     * @return a confirmation message including the added task and updated task count.
+     */
     public String addTask(Task task) {
         taskList.add(task);
         return "Great! New task added:\n" + task.toString()
@@ -68,6 +88,13 @@ public class TaskList {
         return taskList.get(index);
     }
 
+    /**
+     * Deletes a task from the task list.
+     *
+     * @param taskIndex the 1-based index of the task to delete.
+     * @return a confirmation message including the deleted task and updated task count.
+     * @throws ListIndexOutOfBoundException if the index is out of range.
+     */
     public String deleteTask(int taskIndex) throws ListIndexOutOfBoundException {
         if (taskIndex < 0) {
             throw new ListIndexOutOfBoundException("Task number must be positive.");
@@ -97,6 +124,13 @@ public class TaskList {
         return output.toString();
     }
 
+    /**
+     * Marks a task as completed.
+     *
+     * @param taskIndex the 1-based index of the task to mark.
+     * @return a confirmation message including the updated task.
+     * @throws ListIndexOutOfBoundException if the index is out of range.
+     */
     public String mark(int taskIndex) throws ListIndexOutOfBoundException {
         if (taskIndex <= 0) {
             throw new ListIndexOutOfBoundException("Task number must be positive.");
@@ -107,6 +141,13 @@ public class TaskList {
         return "Yay! One task down:\n" + taskList.get(taskIndex - 1).toString();
     }
 
+    /**
+     * Marks a task as not completed.
+     *
+     * @param taskIndex the 1-based index of the task to unmark.
+     * @return a confirmation message including the updated task.
+     * @throws ListIndexOutOfBoundException if the index is out of range.
+     */
     public String unmark(int taskIndex) throws ListIndexOutOfBoundException{
         if (taskIndex <= 0) {
             throw new ListIndexOutOfBoundException("Task number must be positive.");
@@ -121,6 +162,11 @@ public class TaskList {
         return taskList.size();
     }
 
+    /**
+     * Saves all tasks to the given storage.
+     *
+     * @param storage the Storage object to write tasks to.
+     */
     public void saveTasks(Storage storage) {
         StringBuilder sb = new StringBuilder();
         for (Task t : taskList) {

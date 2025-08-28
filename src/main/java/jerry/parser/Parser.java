@@ -14,8 +14,24 @@ import jerry.command.MarkCommand;
 import jerry.command.TodoCommand;
 import jerry.command.UnmarkCommand;
 
+/**
+ * The Parser class interprets user input and translates it into
+ * the corresponding Command object.
+ * It identifies the type of command and instantiates the appropriate subclass
+ * of Command to represent the user's intended action.
+ */
 public class Parser {
 
+    /**
+     * Parses a user input string and returns the corresponding Command object.
+     * <p>
+     * The method expects user input to start with a valid command.
+     * An exception is thrown if the keyword is invalid or unrecognized.
+     *
+     * @param input user input to be parsed
+     * @return Command object representing user's action
+     * @throws JerryException if the input is invalid or cannot be parsed into a known command.
+     */
     public static Command parse(String input) throws JerryException {
         String[] entries = input.trim().split(" ", 2);
         CommandEnum command;

@@ -7,10 +7,22 @@ import jerry.storage.Storage;
 import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
 
+/**
+ * Represents a command to mark a task as completed.
+ * <p>
+ * This class validates the user input, ensuring that the task number is a
+ * positive integer.
+ */
 public class MarkCommand extends Command {
 
     private int index = 0;
 
+    /**
+     * Construct a MarkCommand object based on user input.
+     * The user input must be in the format: "mark task number".
+     * @param input user input containing task number.
+     * @throws InvalidCommandFormatException if the input format is invalid or task number is not a positive integer.
+     */
     public MarkCommand(String input) throws InvalidCommandFormatException {
         String[] entries = input.split(" ", 2);
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
