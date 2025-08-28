@@ -22,7 +22,7 @@ public class Parser {
         try {
             command = CommandEnum.valueOf(entries[0].trim().toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new InvalidCommandException("Sorry! I don't understand what you mean by: " + input +
+            throw new InvalidCommandException("I don't understand what you mean by: " + input +
                     "\nUse these commands at the start of your sentence instead: " +
                     "bye/list/todo/deadline/event/mark/unmark/delete");
         }

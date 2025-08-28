@@ -25,7 +25,7 @@ public class DeadlineCommand extends Command {
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
         String trimmed = desc.trim();
         if (!trimmed.toLowerCase().startsWith("deadline")) {
-            throw new InvalidCommandFormatException("Deadline jerry.command must start with 'deadline'!");
+            throw new InvalidCommandFormatException("Deadline jerry.test.command must start with 'deadline'!");
         }
         String withoutCommand = trimmed.substring(8).trim();
         if (withoutCommand.isEmpty()) {

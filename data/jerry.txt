@@ -1,5 +1,5 @@
 D | 1 | quiz | 2022-10-10 12:30
 D | 0 | project | 2025-12-01 23:59
 E | 1 | meeting | 2025-10-01 09:00 | 2025-10-01 10:00
-T | 0 | groceries
-T | 0 | gym
+T | 1 | groceries
+D | 1 | project ppt | 2025-09-10 23:59
