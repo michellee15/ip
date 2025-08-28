@@ -1,7 +1,6 @@
 package jerry.command;
 
 import jerry.exceptions.JerryException;
-
 import jerry.storage.Storage;
 import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
@@ -22,9 +21,9 @@ public class ByeCommand extends Command {
     /**
      * Executes the bye command by saving tasks to storage and displaying a farewell message.
      *
-     * @param taskList   the task list to operate on.
-     * @param ui      the user interface for input/output.
-     * @param storage the storage system to save or load tasks.
+     * @param taskList the task list to operate on.
+     * @param ui       the user interface for input/output.
+     * @param storage  the storage system to save or load tasks.
      * @throws JerryException handles if there is an error while saving tasks.
      */
     @Override

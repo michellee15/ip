@@ -3,8 +3,8 @@ package jerry.command;
 import jerry.exceptions.InvalidCommandFormatException;
 import jerry.exceptions.JerryException;
 import jerry.storage.Storage;
-import jerry.tasklist.TaskList;
 import jerry.task.ToDo;
+import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
 
 /**
@@ -20,6 +20,7 @@ public class TodoCommand extends Command {
     /**
      * Parses user input to separate 'todo' command keyword and task description.
      * Exceptions is thrown when no task description is provided in the user input.
+     *
      * @param desc user input to be parsed.
      * @throws InvalidCommandFormatException if user input is invalid or empty task description.
      */

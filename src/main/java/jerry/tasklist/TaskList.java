@@ -1,18 +1,18 @@
 package jerry.tasklist;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 import jerry.exceptions.JerryException;
 import jerry.exceptions.ListIndexOutOfBoundException;
 import jerry.storage.Storage;
 import jerry.task.Deadline;
 import jerry.task.Event;
-import jerry.task.ToDo;
 import jerry.task.Task;
+import jerry.task.ToDo;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * Represents a collection of tasks in the Jerry application.
@@ -148,7 +148,7 @@ public class TaskList {
      * @return a confirmation message including the updated task.
      * @throws ListIndexOutOfBoundException if the index is out of range.
      */
-    public String unmark(int taskIndex) throws ListIndexOutOfBoundException{
+    public String unmark(int taskIndex) throws ListIndexOutOfBoundException {
         if (taskIndex <= 0) {
             throw new ListIndexOutOfBoundException("Task number must be positive.");
         } else if (taskIndex > this.getSize()) {
@@ -180,7 +180,7 @@ public class TaskList {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return getList();
     }
 

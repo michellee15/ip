@@ -23,18 +23,18 @@ public class Deadline extends Task {
     /**
      * Constructs a Deadline task with a description and a due date string.
      *
-     * @param desc the description of the task.
+     * @param desc       the description of the task.
      * @param dateString the due date string in the format "yyyy-MM-dd HH:mm".
      * @throws InvalidCommandFormatException if the date string is invalid or incorrectly formatted.
      */
     public Deadline(String desc, String dateString) throws InvalidCommandFormatException {
-       super(desc);
-       try {
+        super(desc);
+        try {
             dueDate = LocalDateTime.parse(dateString, FILE_FORMATTER);
-       } catch (DateTimeParseException e) {
-           throw new InvalidCommandFormatException("Invalid date/time format. " +
+        } catch (DateTimeParseException e) {
+            throw new InvalidCommandFormatException("Invalid date/time format. " +
                     "Expected format: yyyy-MM-dd HH:mm (e.g., 2025-08-27 18:00)");
-       }
+        }
     }
 
     /**
@@ -43,7 +43,7 @@ public class Deadline extends Task {
      * This method is used when loading tasks from storage and ensures
      * proper parsing and validation of the due date.
      *
-     * @param desc the description of the task.
+     * @param desc       the description of the task.
      * @param dateString the due date string read from the file.
      * @return a new Deadline object.
      * @throws InvalidCommandFormatException if the date string is invalid or cannot be parsed.

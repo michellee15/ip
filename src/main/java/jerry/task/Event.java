@@ -27,11 +27,11 @@ public class Event extends Task {
     /**
      * Constructs an Event task with a description, start date/time, and end date/time.
      *
-     * @param desc the description of the event.
+     * @param desc     the description of the event.
      * @param fromDate the start date in the format "yyyy-MM-dd".
      * @param fromTime the start time in the format "HH:mm".
-     * @param toDate the end date in the format "yyyy-MM-dd".
-     * @param toTime the end time in the format "HH:mm".
+     * @param toDate   the end date in the format "yyyy-MM-dd".
+     * @param toTime   the end time in the format "HH:mm".
      * @throws InvalidCommandFormatException if any date or time string is invalid or incorrectly formatted.
      */
     public Event(String desc, String fromDate, String fromTime, String toDate, String toTime) throws InvalidCommandFormatException {
@@ -57,6 +57,6 @@ public class Event extends Task {
     public String toString() {
         return "[EVENT]" + super.toString() + " (from: "
                 + this.fromDate.format(DISPLAY_DATE_FORMATTER) + " " + this.fromTime.format(TIME_FORMATTER)
-                + " to: " + this.toDate.format(DISPLAY_DATE_FORMATTER) + " " + this.fromTime.format(TIME_FORMATTER) + ")";
+                + " to: " + this.toDate.format(DISPLAY_DATE_FORMATTER) + " " + this.toTime.format(TIME_FORMATTER) + ")";
     }
 }

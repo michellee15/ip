@@ -1,12 +1,7 @@
 package jerry.command;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
 import jerry.exceptions.InvalidCommandFormatException;
 import jerry.exceptions.JerryException;
-
 import jerry.storage.Storage;
 import jerry.task.Deadline;
 import jerry.tasklist.TaskList;
@@ -21,8 +16,8 @@ import jerry.ui.Ui;
  */
 public class DeadlineCommand extends Command {
 
-    private String desc;
-    private String dateString;
+    private final String desc;
+    private final String dateString;
 
     /**
      * Constructs a new DeadlineCommand by parsing the user  input which is expected to follow
@@ -69,9 +64,6 @@ public class DeadlineCommand extends Command {
     public String getString() {
         return this.response;
     }
-
-
-
 
 
 }

@@ -2,7 +2,6 @@ package jerry;
 
 import jerry.command.Command;
 import jerry.exceptions.JerryException;
-
 import jerry.parser.Parser;
 import jerry.storage.Storage;
 import jerry.tasklist.TaskList;
@@ -15,9 +14,9 @@ import jerry.ui.Ui;
  */
 public class Jerry {
 
-    private TaskList taskList;
     private final Storage storage;
     private final Ui ui;
+    private TaskList taskList;
 
     /**
      * Constructs a new Jerry application with a specified file path for storage.
@@ -34,6 +33,16 @@ public class Jerry {
             ui.showLoadingError();
             taskList = new TaskList();
         }
+    }
+
+    /**
+     * The entry point of Jerry application.
+     *
+     * @param args command line arguments.
+     * @throws JerryException to handle error when initializing the application.
+     */
+    public static void main(String[] args) throws JerryException {
+        new Jerry("data/jerry.txt").run();
     }
 
     /**
@@ -56,16 +65,6 @@ public class Jerry {
                 ui.showLine();
             }
         }
-    }
-
-    /**
-     * The entry point of Jerry application.
-     *
-     * @param args command line arguments.
-     * @throws JerryException to handle error when initializing the application.
-     */
-    public static void main(String[] args) throws JerryException {
-        new Jerry("data/jerry.txt").run();
     }
 
 }

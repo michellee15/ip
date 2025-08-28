@@ -2,7 +2,6 @@ package jerry.command;
 
 import jerry.exceptions.InvalidCommandFormatException;
 import jerry.exceptions.JerryException;
-
 import jerry.storage.Storage;
 import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
@@ -20,6 +19,7 @@ public class MarkCommand extends Command {
     /**
      * Construct a MarkCommand object based on user input.
      * The user input must be in the format: "mark task number".
+     *
      * @param input user input containing task number.
      * @throws InvalidCommandFormatException if the input format is invalid or task number is not a positive integer.
      */

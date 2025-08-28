@@ -1,7 +1,6 @@
 package jerry.command;
 
 import jerry.exceptions.JerryException;
-
 import jerry.storage.Storage;
 import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
@@ -13,7 +12,9 @@ import jerry.ui.Ui;
  */
 public abstract class Command {
 
-    /** stores the response message generated after executing the command. */
+    /**
+     * stores the response message generated after executing the command.
+     */
     protected String response;
 
     /**

@@ -1,8 +1,5 @@
 package jerry.parser;
 
-import jerry.exceptions.InvalidCommandException;
-import jerry.exceptions.JerryException;
-
 import jerry.command.ByeCommand;
 import jerry.command.Command;
 import jerry.command.CommandEnum;
@@ -13,6 +10,8 @@ import jerry.command.ListCommand;
 import jerry.command.MarkCommand;
 import jerry.command.TodoCommand;
 import jerry.command.UnmarkCommand;
+import jerry.exceptions.InvalidCommandException;
+import jerry.exceptions.JerryException;
 
 /**
  * The Parser class interprets user input and translates it into
