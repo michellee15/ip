@@ -6,9 +6,19 @@ import jerry.storage.Storage;
 import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
 
+/**
+ * Represents a command to delete a task from the task list.
+ */
 public class DeleteCommand extends Command {
     private int index = 0;
 
+    /**
+     * Constructs a DeleteCommand with the given input.
+     * It parses the user input to extract the task number to be deleted and validates whether it is the correct format.
+     * An exception will be thrown if the input is in invalid format or has invalid task number.
+     * @param input the user input in the expected format: "delete task number".
+     * @throws InvalidCommandFormatException if the input is invalid or in an incorrect format.
+     */
     public DeleteCommand(String input) throws InvalidCommandFormatException {
         String[] entries = input.split(" ", 2);
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
