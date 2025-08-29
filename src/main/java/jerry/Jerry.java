@@ -24,7 +24,7 @@ public class Jerry {
      *
      * @param filePath The file path where tasks are stored.
      */
-    public Jerry(String filePath) {
+    public Jerry(String filePath) throws JerryException {
         ui = new Ui();
         storage = new Storage(filePath);
         try {
