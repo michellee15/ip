@@ -10,7 +10,7 @@ import jerry.ui.Ui;
  * Represents a command to delete a task from the task list.
  */
 public class DeleteCommand extends Command {
-    private int index = 0;
+    private final int index;
 
     /**
      * Constructs a DeleteCommand with the given input.

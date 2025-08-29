@@ -12,5 +12,6 @@ public enum CommandEnum {
     TODO,
     MARK,
     UNMARK,
-    DELETE
+    DELETE,
+    FIND
 }
