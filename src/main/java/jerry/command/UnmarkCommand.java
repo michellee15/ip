@@ -14,7 +14,7 @@ import jerry.ui.Ui;
  */
 public class UnmarkCommand extends Command {
 
-    private int index = 0;
+    private final int index;
 
     /**
      * Construct a UnmarkCommand object based on user input.
