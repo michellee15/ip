@@ -6,6 +6,7 @@ import jerry.command.CommandEnum;
 import jerry.command.DeadlineCommand;
 import jerry.command.DeleteCommand;
 import jerry.command.EventCommand;
+import jerry.command.FindCommand;
 import jerry.command.ListCommand;
 import jerry.command.MarkCommand;
 import jerry.command.TodoCommand;
@@ -58,6 +59,8 @@ public class Parser {
             return new MarkCommand(input);
         } else if (command == CommandEnum.DELETE) {
             return new DeleteCommand(input);
+        } else if (command == CommandEnum.FIND) {
+            return new FindCommand(input);
         } else {
             throw new InvalidCommandException("Sorry! I don't understand what you mean by: " + input +
                     "\nUse these commands at the start of your sentence instead: " +
