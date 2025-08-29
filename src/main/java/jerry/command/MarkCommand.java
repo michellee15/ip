@@ -14,7 +14,7 @@ import jerry.ui.Ui;
  */
 public class MarkCommand extends Command {
 
-    private int index = 0;
+    private final int index;
 
     /**
      * Construct a MarkCommand object based on user input.
