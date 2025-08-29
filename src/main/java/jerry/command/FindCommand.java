@@ -9,7 +9,8 @@ import jerry.ui.Ui;
 
 public class FindCommand extends Command {
 
-    String findWord;
+    private final String findWord;
+
     public FindCommand(String userInput) throws JerryException {
         String[] entries = userInput.trim().split(" ",2);
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
