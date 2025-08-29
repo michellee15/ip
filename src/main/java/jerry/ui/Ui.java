@@ -2,10 +2,13 @@ package jerry.ui;
 
 import java.util.Scanner;
 
-import jerry.exceptions.JerryException;
-import jerry.tasklist.TaskList;
-import jerry.task.Task;
-
+/**
+ * Handles all user interactions in the Jerry application.
+ * <p>
+ * The Ui class is responsible for displaying messages to the user,
+ * reading user input, and presenting task-related information in a
+ * human-friendly format.
+ */
 public class Ui {
 
     private final Scanner sc;
@@ -33,31 +36,10 @@ public class Ui {
         System.out.println("Oops! " + message);
     }
 
-    public void showExit() {
-        System.out.println("Bye! See you next time :D");
-    }
-
-    public void showMarked(Task task) {
-        System.out.println("Yay! One task down:\n" + task);
-    }
-
-    public void showUnmarked(Task task) {
-        System.out.println("Noted! I've marked this task as undone:\n" + task);
-    }
-
     public void showLoadingError() {
         System.out.println("Failed to load resources. Please try again!");
     }
 
-    public void showTaskList(TaskList taskList) throws JerryException {
-        if (taskList.getSize() == 0) {
-            throw new JerryException("Your task list is currently empty...");
-        }
-        System.out.println("Your task list:");
-        for (int i = 0; i < taskList.getSize(); i++) {
-            System.out.println((i + 1) + ". " + taskList.get(i));
-        }
-    }
 
     public void displayOutput(String text) {
         System.out.println(text);

@@ -3,13 +3,27 @@ package jerry.command;
 import jerry.exceptions.InvalidCommandFormatException;
 import jerry.exceptions.JerryException;
 import jerry.storage.Storage;
-import jerry.tasklist.TaskList;
 import jerry.task.ToDo;
+import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
 
+/**
+ * Represents a command to add a ToDo task.
+ * <p>
+ * This class validates user input, ensuring no empty description.
+ * The task is added to the task list, saved to storage and a confirmation
+ * message is displayed to the user.
+ */
 public class TodoCommand extends Command {
     private final String desc;
 
+    /**
+     * Parses user input to separate 'todo' command keyword and task description.
+     * Exceptions is thrown when no task description is provided in the user input.
+     *
+     * @param desc user input to be parsed.
+     * @throws InvalidCommandFormatException if user input is invalid or empty task description.
+     */
     public TodoCommand(String desc) throws InvalidCommandFormatException {
         String trimmed = desc.trim();
         if (trimmed.toLowerCase().startsWith("todo")) {

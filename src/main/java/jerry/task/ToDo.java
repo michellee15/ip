@@ -2,12 +2,26 @@ package jerry.task;
 
 import jerry.exceptions.InvalidCommandFormatException;
 
+/**
+ * Represents a simple to-do task in the Jerry application.
+ * <p>
+ * A ToDo is a type of Task that does not have any associated date or time.
+ * The class ensures that the task description is valid and
+ * provides methods to format the task for both file storage and user-friendly display.
+ */
 public class ToDo extends Task {
 
     public ToDo(String desc) throws InvalidCommandFormatException {
         super(parseDesc(desc));
     }
 
+    /**
+     * Parses the input string to extract a valid description for the to-do task.
+     *
+     * @param input the raw input string
+     * @return a trimmed, valid description
+     * @throws InvalidCommandFormatException if the input is empty or only contains the keyword "todo"
+     */
     private static String parseDesc(String input) throws InvalidCommandFormatException {
         String desc = input.trim();
         if (desc.toLowerCase().startsWith("todo ")) {
