@@ -1,5 +1,5 @@
 # Jerry
-> "The best way to get something done is to begin"
+> “You may delay, but time will not.” – Benjamin Franklin
 
 Jerry, your personal interactive chatbot that helps you remember everything you need to do without you keeping it all in your head!😉
 It's,
@@ -15,8 +15,9 @@ And the best part? **It's free!**
 4. let it manage your tasks for you. 😄
 
 ## Features 
-- [x] Managing different type of tasks
-- [ ] Managing deadlines (coming soon)
+- [x] Managing todos
+- [x] Managing deadlines
+- [x] Managing events 
 - [ ] Reminders (coming soon)
 - [ ] Sort tasks (coming soon)
 
