@@ -9,7 +9,7 @@ It's,
 And the best part? **It's free!**
 
 ## Getting started is easy, 
-1. download it from *[here]*(https://github.com/michellee15/ip/blob/master/gradle/wrapper/gradle-wrapper.jar).
+1. download it from [here](https://github.com/michellee15/ip/blob/master/gradle/wrapper/gradle-wrapper.jar).
 2. double-click it.
 3. add your tasks.
 4. let it manage your tasks for you. 😄
