@@ -10,7 +10,6 @@ import jerry.ui.Ui;
  * This class serves as the base for all specific commands that can be executed within the program.
  */
 public abstract class Command {
-
     /**
      * stores the response message generated after executing the command.
      */

@@ -13,7 +13,6 @@ import jerry.ui.Ui;
  * a "/by" keyword followed by the due date.
  */
 public class DeadlineCommand extends Command {
-
     private final String desc;
     private final String dateString;
 
@@ -62,6 +61,4 @@ public class DeadlineCommand extends Command {
     public String getString() {
         return this.response;
     }
-
-
 }

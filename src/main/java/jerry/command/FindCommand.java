@@ -2,7 +2,6 @@ package jerry.command;
 
 import jerry.exceptions.InvalidCommandFormatException;
 import jerry.exceptions.JerryException;
-
 import jerry.storage.Storage;
 import jerry.task.Task;
 import jerry.tasklist.TaskList;
@@ -26,7 +25,7 @@ public class FindCommand extends Command {
      * @throws JerryException if user input is invalid.
      */
     public FindCommand(String userInput) throws JerryException {
-        String[] entries = userInput.trim().split(" ",2);
+        String[] entries = userInput.trim().split(" ", 2);
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
             throw new InvalidCommandFormatException("Enter the task that you want to find");
         }
@@ -71,6 +70,5 @@ public class FindCommand extends Command {
     public String getString() {
         return this.response;
     }
-
 
 }

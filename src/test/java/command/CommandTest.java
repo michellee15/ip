@@ -3,10 +3,6 @@ package command;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import jerry.exceptions.JerryException;
-import jerry.storage.Storage;
-import jerry.tasklist.TaskList;
-import jerry.ui.Ui;
 import org.junit.jupiter.api.Test;
 
 import jerry.command.DeadlineCommand;
@@ -15,18 +11,21 @@ import jerry.command.EventCommand;
 import jerry.command.MarkCommand;
 import jerry.command.TodoCommand;
 import jerry.command.UnmarkCommand;
-
 import jerry.exceptions.InvalidCommandFormatException;
+import jerry.exceptions.JerryException;
+import jerry.storage.Storage;
+import jerry.tasklist.TaskList;
+import jerry.ui.Ui;
 
 public class CommandTest {
-    final private TaskList TASKLIST = new TaskList();
-    final private Ui UI = new Ui();
-    final private Storage STORAGE = new Storage("");
+    private final TaskList taskList = new TaskList();
+    private final Ui userInterface = new Ui();
+    private final Storage storage = new Storage("");
 
     @Test
-    public void TodoCommand_wrongInput_exceptionThrown() {
+    public void todo_wrongInput_exceptionThrown() {
         try {
-            assertEquals(2, new TodoCommand("todo "));
+            new TodoCommand("todo ");
             fail();
         } catch (InvalidCommandFormatException error) {
             assertEquals("You forgot to describe what your todo is...", error.getMessage());
@@ -34,38 +33,38 @@ public class CommandTest {
     }
 
     @Test
-    public void DeadlineCommand_wrongInput_exceptionThrown() {
+    public void deadline_wrongInput_exceptionThrown() {
         try {
             DeadlineCommand deadlineCommand = new DeadlineCommand("deadline test");
-            deadlineCommand.execute(TASKLIST, UI, STORAGE);
+            deadlineCommand.execute(taskList, userInterface, storage);
         } catch (JerryException error) {
             assertEquals("Deadline must have '/by' keyword followed by the due date", error.getMessage());
         }
     }
 
     @Test
-    public void EventCommand_wrongInput_exceptionThrown() {
+    public void event_wrongInput_exceptionThrown() {
         try {
             EventCommand eventCommand = new EventCommand("event test from test");
-            eventCommand.execute(TASKLIST, UI, STORAGE);
+            eventCommand.execute(taskList, userInterface, storage);
         } catch (JerryException error) {
             assertEquals("Event must have '/from' and 'to' keywords.", error.getMessage());
         }
     }
 
     @Test
-    public void DeleteCommand_wrongInput_exceptionThrown() {
+    public void delete_wrongInput_exceptionThrown() {
         try {
-            assertEquals(0, new DeleteCommand("delete test"));
+            new DeleteCommand("delete test");
         } catch (JerryException error) {
             assertEquals("Task number must be positive!", error.getMessage());
         }
     }
 
     @Test
-    public void MarkCommand_wrongInput_exceptionThrown() {
+    public void mark_wrongInput_exceptionThrown() {
         try {
-            assertEquals(0, new MarkCommand("mark test"));
+            new MarkCommand("mark test");
             fail();
         } catch (InvalidCommandFormatException error) {
             assertEquals("Task number must be positive!", error.getMessage());
@@ -73,18 +72,18 @@ public class CommandTest {
     }
 
     @Test
-    public void MarkCommand_wrongInput2_exceptionThrown() {
+    public void mark_wrongInput2_exceptionThrown() {
         try {
-            assertEquals(0, new MarkCommand("mark"));
+            new MarkCommand("mark");
             fail();
         } catch (InvalidCommandFormatException error) {
             assertEquals("Task number must be positive!", error.getMessage());
         }
     }
     @Test
-    public void UnmarkCommand_wrongInput_exceptionThrown() {
+    public void unmark_wrongInput_exceptionThrown() {
         try {
-            assertEquals(0, new UnmarkCommand("mark test"));
+            new UnmarkCommand("mark test");
             fail();
         } catch (InvalidCommandFormatException error) {
             assertEquals("Task number must be positive!", error.getMessage());
@@ -92,9 +91,9 @@ public class CommandTest {
     }
 
     @Test
-    public void UnmarkCommand_wrongInput2_exceptionThrown() {
+    public void unmark_wrongInput2_exceptionThrown() {
         try {
-            assertEquals(0, new UnmarkCommand("mark"));
+            new UnmarkCommand("mark");
             fail();
         } catch (InvalidCommandFormatException error) {
             assertEquals("Task number must be positive!", error.getMessage());

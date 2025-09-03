@@ -40,5 +40,4 @@ public class ByeCommand extends Command {
         this.response = this.end();
         return this.response;
     }
-
 }

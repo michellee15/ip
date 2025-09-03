@@ -1,12 +1,10 @@
 package parser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
 
-import jerry.command.ListCommand;
 import org.junit.jupiter.api.Test;
 
-import jerry.command.ByeCommand;
+import jerry.command.ListCommand;
 import jerry.exceptions.JerryException;
 import jerry.parser.Parser;
 
@@ -16,9 +14,9 @@ public class ParserTest {
         try {
             Parser.parse("test");
         } catch (JerryException error) {
-            assertEquals("I don't understand what you mean by: test\n" +
-                    "Use these commands at the start of your sentence instead: " +
-                    "bye/list/todo/deadline/event/mark/unmark/delete",
+            assertEquals("I don't understand what you mean by: test\n"
+                            + "Use these commands at the start of your sentence instead: "
+                            + "bye/list/todo/deadline/event/mark/unmark/delete",
                     error.getMessage());
         }
     }

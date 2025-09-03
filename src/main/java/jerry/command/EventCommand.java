@@ -8,14 +8,12 @@ import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
 
 /**
- * Represents a command to add an event task in the application
- * <p>
- * It validates the user input format to ensure that it has a description
+ * A command to add an event into the task list.
+ * It checks the user input format to ensure that it has a description
  * and that the start and end date-times are correctly specified using
  * the '/from' and 'to' keywords.
- * <p>
  * The event is added to the task list, saved to storage and a display will be shown
- * as a saved confirmation to the user
+ * as a confirmation to the user that the task is successfully saved.
  */
 public class EventCommand extends Command {
 
@@ -53,7 +51,6 @@ public class EventCommand extends Command {
 
     /**
      * Parses the input string into event description and date-time portion.
-     * <p>
      * It ensures that the description is not empty, and that both '/from' and
      * 'to' keywords are present in the input.
      *

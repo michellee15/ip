@@ -37,7 +37,9 @@ public abstract class Task {
         this.isDone = false;
     }
 
-    public String getDescription() { return this.desc; }
+    public String getDescription() {
+        return this.desc;
+    }
     /**
      * Display a string representation of the task to save to file.
      *

@@ -32,6 +32,7 @@ public class Jerry {
         } catch (JerryException e) {
             ui.showLoadingError();
             taskList = new TaskList();
+            throw new JerryException("Error! Failed loading file!");
         }
     }
 
@@ -66,5 +67,4 @@ public class Jerry {
             }
         }
     }
-
 }
