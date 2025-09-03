@@ -3,9 +3,7 @@ package jerry.ui;
 import java.util.Scanner;
 
 /**
- * Handles all user interactions in the Jerry application.
- * <p>
- * The Ui class is responsible for displaying messages to the user,
+ * The Ui class handles all user interaction which includes displaying messages to the user,
  * reading user input, and presenting task-related information in a
  * human-friendly format.
  */

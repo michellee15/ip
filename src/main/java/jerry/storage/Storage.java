@@ -7,8 +7,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * The Storage class is responsible for managing task data.
- * It handles reading from and writing to file on the file system, managing the storage
+ * The Storage class is to manage task data, inclusive of handling reading from
+ * and writing to file on the file system, managing the storage
  * and retrieval of task-related information in the Jerry application.
  */
 public class Storage {
@@ -30,12 +30,12 @@ public class Storage {
             File file = new File(filePath);
             if (!file.exists()) {
                 File directory = new File("./data");
-                if (!directory.exists() && !directory.mkdirs()) {
-                    throw new JerryException("Error! Failed to create data directory");
+                if (!directory.exists()) {
+                    directory.mkdirs();
                 }
                 file = new File(directory, "jerry.txt");
-                if (!file.exists() && !file.createNewFile()) {
-                    throw new JerryException("Error! Failed to create storage file");
+                if (!file.exists()) {
+                    file.createNewFile();
                 }
             }
             return file;

@@ -8,8 +8,7 @@ import jerry.ui.Ui;
 
 /**
  * Represents a command to mark a task as completed.
- * <p>
- * This class validates the user input, ensuring that the task number is a
+ * This class checks the user input, ensuring that the task number is a
  * positive integer.
  */
 public class MarkCommand extends Command {

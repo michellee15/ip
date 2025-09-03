@@ -20,7 +20,7 @@ public class DeadlineCommand extends Command {
     private final String dateString;
 
     /**
-     * Constructs a new DeadlineCommand by parsing the user  input which is expected to follow
+     * Constructs a new DeadlineCommand by parsing the user input which is expected to follow
      * the format: "deadline task /by due date".
      * An exception is thrown if the format is invalid or if the user missed out the task description.
      *

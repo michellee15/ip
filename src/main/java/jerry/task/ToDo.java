@@ -3,8 +3,6 @@ package jerry.task;
 import jerry.exceptions.InvalidCommandFormatException;
 
 /**
- * Represents a simple to-do task in the Jerry application.
- * <p>
  * A ToDo is a type of Task that does not have any associated date or time.
  * The class ensures that the task description is valid and
  * provides methods to format the task for both file storage and user-friendly display.

@@ -6,8 +6,6 @@ import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
 
 /**
- * Represents the command to exit the Jerry application.
- * <p>
  * When executed, this command saves the current task to storage,
  * displays a farewell message to the user and the application will terminate.
  */

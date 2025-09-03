@@ -8,9 +8,7 @@ import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
 
 /**
- * Represents a command to add a ToDo task.
- * <p>
- * This class validates user input, ensuring no empty description.
+ * This class checks user input to ensure no empty description.
  * The task is added to the task list, saved to storage and a confirmation
  * message is displayed to the user.
  */

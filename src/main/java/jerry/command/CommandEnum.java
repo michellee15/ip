@@ -2,7 +2,7 @@ package jerry.command;
 
 /**
  * Enum that represents all the available commands in Jerry application.
- * Each constant corresponds to a specific command that is executed by the program.
+ * Each constant corresponds to a specific command.
  */
 public enum CommandEnum {
     BYE,

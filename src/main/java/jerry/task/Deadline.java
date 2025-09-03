@@ -7,8 +7,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 /**
- * Represents a deadline task in the Jerry application.
- * <p>
  * A Deadline is a type of Task that has a due date and time.
  * It provides methods to parse and format the due date for both file storage
  * and user-friendly display.
@@ -21,7 +19,7 @@ public class Deadline extends Task {
     private static final DateTimeFormatter DISPLAY_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm");
 
     /**
-     * Constructs a Deadline task with a description and a due date string.
+     * Make a Deadline task with a description and a due date string.
      *
      * @param desc       the description of the task.
      * @param dateString the due date string in the format "yyyy-MM-dd HH:mm".
