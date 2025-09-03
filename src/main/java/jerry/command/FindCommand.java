@@ -9,7 +9,7 @@ import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
 
 /**
- * FindCommand class is responsible in finding the task that matches with the key word entered by the user.
+ * Helps in finding the task that matches with the key word entered by the user.
  * It parses the user input, and display one or list of matching task if found.
  */
 public class FindCommand extends Command {
@@ -17,7 +17,7 @@ public class FindCommand extends Command {
     private final String findWord;
 
     /**
-     * This constructor takes in user input and parse them into two components:
+     * It takes in user input and parse them into two components:
      * 'find' command and keyword that the user enter to find the task.
      * Exception is thrown when the command is invalid and if the user
      * does not enter the keyword to find the matching tasks.
@@ -35,8 +35,6 @@ public class FindCommand extends Command {
 
 
     /**
-     * Handles the finding of task.
-     * <p>
      * Searches through the TaskList for tasks whose descriptions contain the specified keyword.
      * Tasks are displayed in order if they are found.
      * Otherwise, a message indicating that no tasks were found is shown.

@@ -8,9 +8,7 @@ import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
 
 /**
- * Represents a command to add a deadline task in the Jerry application
- * <p>
- * This class parses the user input and adds the task to the task list when executed.
+ * Parses the user input and adds the task to the task list when executed.
  * It ensures the input follows the expected syntax; starting with "deadline", and include
  * a "/by" keyword followed by the due date.
  */

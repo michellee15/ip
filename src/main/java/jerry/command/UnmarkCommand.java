@@ -7,10 +7,8 @@ import jerry.tasklist.TaskList;
 import jerry.ui.Ui;
 
 /**
- * Represents a command to mark a task as not completed.
- * <p>
- * This class validates the user input, ensuring that the task number is a
- * positive integer.
+ * This class checks the user input to ensure that
+ * the task number is a positive integer.
  */
 public class UnmarkCommand extends Command {
 

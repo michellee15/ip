@@ -15,8 +15,6 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * Represents a collection of tasks in the Jerry application.
- * <p>
  * The TaskList manages a list of Task objects, providing
  * functionality to add, remove, mark, unmark, retrieve, and save tasks.
  * It also supports loading tasks from a file and generating user-friendly

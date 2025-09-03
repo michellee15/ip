@@ -7,7 +7,6 @@ import jerry.ui.Ui;
 
 /**
  * An abstract class that represents a command in Jerry application.
- * <p>
  * This class serves as the base for all specific commands that can be executed within the program.
  */
 public abstract class Command {

@@ -3,11 +3,9 @@ package jerry.task;
 import jerry.exceptions.InvalidCommandFormatException;
 
 /**
- * Represents a generic task in the Jerry application
- * <p>
- * This class serves as the parent class for specific task types, provides methods to
- * mark and unmark tasks, retrieve current status and convert tasks to string representation
- * for display or storage.
+ * Serves as the parent class for specific task types, provides methods to
+ * mark and unmark tasks, retrieve current status and convert tasks
+ * to string representation for display or storage.
  */
 public abstract class Task {
     protected String desc;
@@ -41,7 +39,7 @@ public abstract class Task {
 
     public String getDescription() { return this.desc; }
     /**
-     * Display a string representation of the task for saving to file.
+     * Display a string representation of the task to save to file.
      *
      * @return a string containing completion status, description which are separated by '|'.
      */
@@ -50,7 +48,7 @@ public abstract class Task {
     }
 
     /**
-     * Display a human-readable string representation of the task.
+     * Display a readable string representation of the task to the user.
      *
      * @return a string containing completion status and task description.
      */

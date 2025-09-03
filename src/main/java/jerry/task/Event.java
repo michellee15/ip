@@ -8,8 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 /**
- * Represents an event task in the Jerry application.
- * <p>
  * An Event is a type of Task that has specific
  * time period with defined start and end dates and times.
  * The class validates the input date and time strings and
