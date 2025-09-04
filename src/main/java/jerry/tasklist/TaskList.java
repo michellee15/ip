@@ -1,5 +1,11 @@
 package jerry.tasklist;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import jerry.exceptions.JerryException;
 import jerry.exceptions.ListIndexOutOfBoundException;
 import jerry.storage.Storage;
@@ -7,12 +13,6 @@ import jerry.task.Deadline;
 import jerry.task.Event;
 import jerry.task.Task;
 import jerry.task.ToDo;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 /**
  * The TaskList manages a list of Task objects, providing
@@ -44,25 +44,23 @@ public class TaskList {
                 switch (details[0]) {
                 case "T":
                     ToDo todo = new ToDo(details[2].trim());
-                    if (details[1].equals("1")) todo.mark();
+                    if (details[1].equals("1")) {
+                        todo.mark();
+                    }
                     taskList.add(todo);
                     break;
                 case "D":
                     Deadline deadline = Deadline.fromFile(details[2].trim(), details[3].trim());
-                    if (details[1].trim().equals("1")) deadline.mark();
+                    if (details[1].trim().equals("1")) {
+                        deadline.mark();
+                    }
                     taskList.add(deadline);
                     break;
                 case "E":
-                    if (details.length != 5) {
-                        throw new JerryException("");
-                    }
-                    String desc = details[2].trim();
-                    String[] fromDateTime = details[3].trim().split(" ");
-                    String[] toDateTime = details[4].trim().split(" ");
-                    Event event = new Event(desc, fromDateTime[0], fromDateTime[1], toDateTime[0], toDateTime[1]);
-                    if (details[1].trim().equals("1")) event.mark();
+                    Event event = Event.getEvent(details);
                     taskList.add(event);
                     break;
+                default:
                 }
             }
         } catch (FileNotFoundException e) {
@@ -100,8 +98,8 @@ public class TaskList {
             throw new ListIndexOutOfBoundException("You only have " + this.getSize() + " tasks in the list.");
         }
         Task task = taskList.remove(taskIndex - 1);
-        return "Noted! I've marked this task as deleted:\n" + task.toString() +
-                "\n" + "Now you have " + this.getSize() + " tasks in the list!";
+        return "Noted! I've marked this task as deleted:\n" + task.toString()
+                + "\n" + "Now you have " + this.getSize() + " tasks in the list!";
     }
 
     public String getList() {
@@ -181,5 +179,4 @@ public class TaskList {
     public String toString() {
         return getList();
     }
-
 }

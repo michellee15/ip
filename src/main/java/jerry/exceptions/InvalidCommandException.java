@@ -1,8 +1,7 @@
 package jerry.exceptions;
 
 /**
- * Represents an exception that is thrown when user enters a command that is not recognized by the application.
- * <p>
+ * An exception that is thrown when user enters a command that is not recognized by the application.
  * This exception is used for invalid commands and display an appropriate error message that will help guide the user
  * in correcting their input command.
  */

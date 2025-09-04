@@ -1,11 +1,12 @@
 package jerry.task;
 
-import jerry.exceptions.InvalidCommandFormatException;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import jerry.exceptions.InvalidCommandFormatException;
+import jerry.exceptions.JerryException;
 
 /**
  * An Event is a type of Task that has specific
@@ -14,13 +15,13 @@ import java.time.format.DateTimeParseException;
  * formats them appropriately for both file storage and user-friendly display.
  */
 public class Event extends Task {
+    private static final DateTimeFormatter FILE_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    private static final DateTimeFormatter DISPLAY_DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
+    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
     private final LocalDate fromDate;
     private final LocalTime fromTime;
     private final LocalDate toDate;
     private final LocalTime toTime;
-    private static final DateTimeFormatter FILE_DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    private static final DateTimeFormatter DISPLAY_DATE_FORMATTER = DateTimeFormatter.ofPattern("dd MMM yyyy");
-    private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
     /**
      * Constructs an Event task with a description, start date/time, and end date/time.
@@ -32,7 +33,8 @@ public class Event extends Task {
      * @param toTime   the end time in the format "HH:mm".
      * @throws InvalidCommandFormatException if any date or time string is invalid or incorrectly formatted.
      */
-    public Event(String desc, String fromDate, String fromTime, String toDate, String toTime) throws InvalidCommandFormatException {
+    public Event(String desc, String fromDate, String fromTime, String toDate, String toTime)
+            throws InvalidCommandFormatException {
         super(desc);
         try {
             this.fromDate = LocalDate.parse(fromDate, FILE_DATE_FORMATTER);
@@ -40,8 +42,23 @@ public class Event extends Task {
             this.toDate = LocalDate.parse(toDate, FILE_DATE_FORMATTER);
             this.toTime = LocalTime.parse(toTime, TIME_FORMATTER);
         } catch (DateTimeParseException e) {
-            throw new InvalidCommandFormatException("Invalid date format! Expected format: yyyy-MM-dd, e.g., 2022-08-06");
+            throw new InvalidCommandFormatException("Invalid date format! "
+                    + "Expected format: yyyy-MM-dd, e.g., 2022-08-06");
         }
+    }
+
+    public static Event getEvent(String[] details) throws JerryException {
+        if (details.length != 5) {
+            throw new JerryException("");
+        }
+        String desc = details[2].trim();
+        String[] fromDateTime = details[3].trim().split(" ");
+        String[] toDateTime = details[4].trim().split(" ");
+        Event event = new Event(desc, fromDateTime[0], fromDateTime[1], toDateTime[0], toDateTime[1]);
+        if (details[1].trim().equals("1")) {
+            event.mark();
+        }
+        return event;
     }
 
     @Override

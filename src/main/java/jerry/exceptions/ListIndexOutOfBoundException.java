@@ -1,9 +1,8 @@
 package jerry.exceptions;
 
 /**
- * Represents an exception that is thrown when a user attempts to access a task number
- * that is greater than the number of tasks available in the task list.
- * <p>
+ * An exception that is thrown when a user tries to access a task number
+ * that is greater than the task list size.
  * This exception is to prevent invalid operations on task list and provide users with
  * appropriate error messages.
  */

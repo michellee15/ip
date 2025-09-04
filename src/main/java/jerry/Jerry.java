@@ -67,4 +67,10 @@ public class Jerry {
         }
     }
 
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public static String getResponse(String input) {
+        return "Jerry heard: " + input;
+    }
 }

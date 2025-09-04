@@ -1,10 +1,10 @@
 package jerry.storage;
 
-import jerry.exceptions.JerryException;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import jerry.exceptions.JerryException;
 
 /**
  * The Storage class is to manage task data, inclusive of handling reading from

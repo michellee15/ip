@@ -15,8 +15,7 @@ import jerry.exceptions.InvalidCommandException;
 import jerry.exceptions.JerryException;
 
 /**
- * The Parser class interprets user input and translates it into
- * the corresponding Command object.
+ * The Parser class interprets user input and translates it into the corresponding Command object.
  * It identifies the type of command and instantiates the appropriate subclass
  * of Command to represent the user's intended action.
  */
@@ -24,7 +23,6 @@ public class Parser {
 
     /**
      * Parses a user input string and returns the corresponding Command object.
-     * <p>
      * The method expects user input to start with a valid command.
      * An exception is thrown if the keyword is invalid or unrecognized.
      *
@@ -38,9 +36,9 @@ public class Parser {
         try {
             command = CommandEnum.valueOf(entries[0].trim().toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new InvalidCommandException("I don't understand what you mean by: " + input +
-                    "\nUse these commands at the start of your sentence instead: " +
-                    "bye/list/todo/deadline/event/mark/unmark/delete");
+            throw new InvalidCommandException("I don't understand what you mean by: "
+                    + input + "\nUse these commands at the start of your sentence instead: "
+                    + "bye/list/todo/deadline/event/mark/unmark/delete");
         }
 
         if (command == CommandEnum.BYE) {
@@ -62,9 +60,9 @@ public class Parser {
         } else if (command == CommandEnum.FIND) {
             return new FindCommand(input);
         } else {
-            throw new InvalidCommandException("Sorry! I don't understand what you mean by: " + input +
-                    "\nUse these commands at the start of your sentence instead: " +
-                    "bye/list/todo/deadline/event/mark/unmark/delete");
+            throw new InvalidCommandException("Sorry! I don't understand what you mean by: "
+                    + input + "\nUse these commands at the start of your sentence instead: "
+                    + "bye/list/todo/deadline/event/mark/unmark/delete");
         }
     }
 }

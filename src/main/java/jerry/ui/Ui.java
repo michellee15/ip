@@ -15,6 +15,9 @@ public class Ui {
         sc = new Scanner(System.in);
     }
 
+    /**
+     * Display a welcome message to the user as they first open the application.
+     */
     public void showWelcome() {
         System.out.println("___________________________________________________");
         System.out.println("Hello, nice to meet you! I'm Jerry the mouse!");
