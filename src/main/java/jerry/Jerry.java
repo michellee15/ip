@@ -68,8 +68,6 @@ public class Jerry {
             }
         }
     }
-<<<<<<< HEAD
-=======
 
     public String getWelcomeMessage() {
         String welcome = "Hello, nice to meet you! I'm Jerry!\n" 
@@ -92,5 +90,4 @@ public class Jerry {
             return e.getMessage();
         }
     }
->>>>>>> branch-Level-10
 }

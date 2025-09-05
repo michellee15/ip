@@ -19,13 +19,6 @@ public class Ui {
     /**
      * Display a welcome message to the user as they first open the application.
      */
-<<<<<<< HEAD
-    public void showWelcome() {
-        System.out.println("___________________________________________________");
-        System.out.println("Hello, nice to meet you! I'm Jerry the mouse!");
-        System.out.println("What can I do for you today?");
-        System.out.println("___________________________________________________");
-=======
     public void showWelcome(String message) {
         System.out.println(message);
         this.latest = message;
@@ -33,7 +26,6 @@ public class Ui {
 
     public String getLastOutput() {
         return this.latest;
->>>>>>> branch-Level-10
     }
 
     public String readInput() {

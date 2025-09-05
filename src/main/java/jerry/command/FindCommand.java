@@ -70,8 +70,4 @@ public class FindCommand extends Command {
     public String getString() {
         return this.response;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> branch-Level-10
 }
