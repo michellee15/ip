@@ -1,19 +1,19 @@
 .label {
-  -fx-background-color: linear-gradient(to bottom right, #fff0c7, #f1ea99);
-  -fx-border-color: #fab078 #85e4cb #fbb3da #a0d2ef;
-  -fx-border-width: 2px;
+  -fx-background-color:  #faedca;
+  -fx-border-color: white;
+  -fx-border-width: 3px;
   -fx-background-radius: 1em 1em 0 1em;
   -fx-border-radius: 1em 1em 0 1em;
-  -fx-padding: 6px;
+  -fx-padding: 8px;
   -fx-border-insets: 0px 7px 0px 7px;
   -fx-background-insets: 0px 7px 0px 7px;
-  -fx-wrap-text: true;
-  -fx-max-width: 100%;
+  -fx-font-size: 14px;
 }
 
 .reply-label {
   -fx-background-radius: 1em 1em 1em 0;
   -fx-border-radius: 1em 1em 1em 0;
+  -fx-font-size: 14px;
 }
 
 #displayPicture {

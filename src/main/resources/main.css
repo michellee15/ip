@@ -7,8 +7,8 @@
 }
 
 .text-field {
-  -fx-background-color: #ffffff;
-  -fx-font: 20px "Arial";
+  -fx-background-color: #faead1;
+  -fx-font: 18px "Arial";
 }
 
 .button {
