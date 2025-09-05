@@ -1,5 +1,6 @@
 package jerry;
 
+import javafx.application.Platform;
 import jerry.command.Command;
 import jerry.exceptions.JerryException;
 import jerry.parser.Parser;
@@ -14,9 +15,9 @@ import jerry.ui.Ui;
  */
 public class Jerry {
 
-    private final Storage storage;
-    private final Ui ui;
-    private TaskList taskList;
+    private static Storage storage;
+    private static Ui ui;
+    private static TaskList taskList;
 
     /**
      * Constructs a new Jerry application with a specified file path for storage.
@@ -51,7 +52,7 @@ public class Jerry {
      * The user input is parsed, read and executed continuously until the exit command is entered.
      */
     public void run() {
-        ui.showWelcome();
+        ui.showWelcome(this.getWelcomeMessage());
         boolean isExit = false;
         while (!isExit) {
             try {
@@ -67,4 +68,29 @@ public class Jerry {
             }
         }
     }
+<<<<<<< HEAD
+=======
+
+    public String getWelcomeMessage() {
+        String welcome = "Hello, nice to meet you! I'm Jerry!\n" 
+                        + "What can I do for you today?";
+        return welcome;
+    }
+
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public static String getResponse(String input) {
+        try {
+            Command c = Parser.parse(input);
+            c.execute(taskList, ui, storage);
+            if (c.isExit()) {
+                Platform.exit();
+            }
+            return ui.getLastOutput();
+        } catch (JerryException e) {
+            return e.getMessage();
+        }
+    }
+>>>>>>> branch-Level-10
 }

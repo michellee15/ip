@@ -11,7 +11,7 @@ import jerry.ui.Ui;
  */
 public abstract class Command {
     /**
-     * stores the response message generated after executing the command.
+     * Stores the response message generated after executing the command.
      */
     protected String response;
 

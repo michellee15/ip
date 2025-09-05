@@ -36,5 +36,4 @@ public class ParserTest {
         assertEquals("EventCommand",
                 Parser.parse("event test /from 2022-10-10 10:30 to 2022-10-10 12:30").getClass().getSimpleName());
     }
-
 }

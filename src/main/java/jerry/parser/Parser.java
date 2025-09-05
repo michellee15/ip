@@ -15,8 +15,7 @@ import jerry.exceptions.InvalidCommandException;
 import jerry.exceptions.JerryException;
 
 /**
- * The Parser class interprets user input and translates it into
- * the corresponding Command object.
+ * The Parser class interprets user input and translates it into the corresponding Command object.
  * It identifies the type of command and instantiates the appropriate subclass
  * of Command to represent the user's intended action.
  */
