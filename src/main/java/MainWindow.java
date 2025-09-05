@@ -30,9 +30,11 @@ public class MainWindow extends AnchorPane {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
-    /** Injects the Duke instance */
-    public void setDuke(Jerry j) {
-        jerry = j;
+    /** Injects the Jerry instance */
+    public void setJerry(Jerry j) {
+        this.jerry = j;
+        dialogContainer.getChildren().add(
+            DialogBox.getJerryDialog(jerry.getWelcomeMessage(), jerryImage));
     }
 
     /**

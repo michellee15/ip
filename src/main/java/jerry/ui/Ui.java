@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Ui {
 
     private final Scanner sc;
+    private String latest = "";
 
     public Ui() {
         sc = new Scanner(System.in);
@@ -18,11 +19,13 @@ public class Ui {
     /**
      * Display a welcome message to the user as they first open the application.
      */
-    public void showWelcome() {
-        System.out.println("___________________________________________________");
-        System.out.println("Hello, nice to meet you! I'm Jerry the mouse!");
-        System.out.println("What can I do for you today?");
-        System.out.println("___________________________________________________");
+    public void showWelcome(String message) {
+        System.out.println(message);
+        this.latest = message;
+    }
+
+    public String getLastOutput() {
+        return this.latest;
     }
 
     public String readInput() {
@@ -34,16 +37,19 @@ public class Ui {
     }
 
     public void showError(String message) {
-        System.out.println("Oops! " + message);
+        String errorMessage = "Oops! " + message;
+        this.latest = errorMessage;
     }
 
     public void showLoadingError() {
-        System.out.println("Failed to load resources. Please try again!");
+        String text = "Failed to load resources. Please try again!";
+        this.latest = text;
     }
 
 
     public void displayOutput(String text) {
         System.out.println(text);
+        this.latest = text;
     }
 
 }

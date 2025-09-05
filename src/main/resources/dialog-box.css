@@ -7,6 +7,8 @@
   -fx-padding: 6px;
   -fx-border-insets: 0px 7px 0px 7px;
   -fx-background-insets: 0px 7px 0px 7px;
+  -fx-wrap-text: true;
+  -fx-max-width: 100%;
 }
 
 .reply-label {
