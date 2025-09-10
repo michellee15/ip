@@ -5,13 +5,13 @@ package jerry.command;
  * Each constant corresponds to a specific command.
  */
 public enum CommandEnum {
-    BYE,
-    LIST,
-    DEADLINE,
-    EVENT,
-    TODO,
-    MARK,
-    UNMARK,
-    DELETE,
-    FIND
+    Bye,
+    List,
+    Deadline,
+    Event,
+    Todo,
+    Mark,
+    Unmark,
+    Delete,
+    Find
 }

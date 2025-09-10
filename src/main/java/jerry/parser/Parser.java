@@ -34,30 +34,31 @@ public class Parser {
         String[] entries = input.trim().split(" ", 2);
         CommandEnum command;
         try {
-            command = CommandEnum.valueOf(entries[0].trim().toUpperCase());
+            command = CommandEnum.valueOf(entries[0].trim().substring(0,1).toUpperCase()
+            + entries[0].trim().substring(1).toLowerCase());
         } catch (IllegalArgumentException e) {
             throw new InvalidCommandException("I don't understand what you mean by: "
                     + input + "\nUse these commands at the start of your sentence instead: "
                     + "bye/list/todo/deadline/event/mark/unmark/delete");
         }
 
-        if (command == CommandEnum.BYE) {
+        if (command == CommandEnum.Bye) {
             return new ByeCommand();
-        } else if (command == CommandEnum.LIST) {
+        } else if (command == CommandEnum.List) {
             return new ListCommand();
-        } else if (command == CommandEnum.TODO) {
+        } else if (command == CommandEnum.Todo) {
             return new TodoCommand(input);
-        } else if (command == CommandEnum.DEADLINE) {
+        } else if (command == CommandEnum.Deadline) {
             return new DeadlineCommand(input);
-        } else if (command == CommandEnum.EVENT) {
+        } else if (command == CommandEnum.Event) {
             return new EventCommand(input);
-        } else if (command == CommandEnum.UNMARK) {
+        } else if (command == CommandEnum.Unmark) {
             return new UnmarkCommand(input);
-        } else if (command == CommandEnum.MARK) {
+        } else if (command == CommandEnum.Mark) {
             return new MarkCommand(input);
-        } else if (command == CommandEnum.DELETE) {
+        } else if (command == CommandEnum.Delete) {
             return new DeleteCommand(input);
-        } else if (command == CommandEnum.FIND) {
+        } else if (command == CommandEnum.Find) {
             return new FindCommand(input);
         } else {
             throw new InvalidCommandException("Sorry! I don't understand what you mean by: "
