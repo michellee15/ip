@@ -40,7 +40,7 @@ public class DeadlineCommand extends Command {
         this.desc = parts[0].trim();
         dateString = parts[1].trim();
         if (desc.isEmpty() || dateString.isEmpty()) {
-            throw new InvalidCommandFormatException("Description and due date cannot be empty...");
+            throw new InvalidCommandFormatException("Due date cannot be empty...");
         }
     }
 
