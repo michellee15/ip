@@ -31,16 +31,7 @@ public class Parser {
      * @throws JerryException if the input is invalid or cannot be parsed into a known command.
      */
     public static Command parse(String input) throws JerryException {
-        String[] entries = input.trim().split(" ", 2);
-        CommandEnum command;
-        try {
-            command = CommandEnum.valueOf(entries[0].trim().substring(0,1).toUpperCase()
-            + entries[0].trim().substring(1).toLowerCase());
-        } catch (IllegalArgumentException e) {
-            throw new InvalidCommandException("I don't understand what you mean by: "
-                    + input + "\nUse these commands at the start of your sentence instead: "
-                    + "bye/list/todo/deadline/event/mark/unmark/delete");
-        }
+        CommandEnum command = commandEnumParser(input.trim());
 
         if (command == CommandEnum.Bye) {
             return new ByeCommand();
@@ -62,6 +53,18 @@ public class Parser {
             return new FindCommand(input);
         } else {
             throw new InvalidCommandException("Sorry! I don't understand what you mean by: "
+                    + input + "\nUse these commands at the start of your sentence instead: "
+                    + "bye/list/todo/deadline/event/mark/unmark/delete");
+        }
+    }
+
+    private static CommandEnum commandEnumParser(String input) throws InvalidCommandException {
+        String[] entries = input.trim().split(" ", 2);
+        try {
+            return CommandEnum.valueOf(entries[0].trim().substring(0,1).toUpperCase()
+            + entries[0].trim().substring(1).toLowerCase());
+        } catch (IllegalArgumentException e) {
+            throw new InvalidCommandException("I don't understand what you mean by: "
                     + input + "\nUse these commands at the start of your sentence instead: "
                     + "bye/list/todo/deadline/event/mark/unmark/delete");
         }

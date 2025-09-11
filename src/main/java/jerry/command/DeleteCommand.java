@@ -10,7 +10,7 @@ import jerry.ui.Ui;
  * Represents a command to delete a task from the task list.
  */
 public class DeleteCommand extends Command {
-    private final int index;
+    private final int taskIndex;
 
     /**
      * It parses the user input to extract the task number to be deleted and validates whether it is the correct format.
@@ -20,20 +20,36 @@ public class DeleteCommand extends Command {
      * @throws InvalidCommandFormatException if the input is invalid or in an incorrect format.
      */
     public DeleteCommand(String input) throws InvalidCommandFormatException {
+        this.taskIndex = indexParser(input);
+    }
+
+    /**
+     * To check the valid task index from user input.
+     * 
+     * @param input user input string
+     * @return task index as integer 
+     * @throws InvalidCommandFormatException if input is empty or invalid number
+     */
+    private int indexParser(String input) throws InvalidCommandFormatException {
         String[] entries = input.split(" ", 2);
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
             throw new InvalidCommandFormatException("Task number must be positive!");
         }
         try {
-            index = Integer.parseInt(entries[1]);
+            int index = Integer.parseInt(entries[1]);
+            if (index <= 0) {
+                throw new InvalidCommandFormatException("Task number must be greater than 0");
+            }
+            return index;
         } catch (NumberFormatException e) {
             throw new InvalidCommandFormatException("Task number must be positive!");
         }
     }
 
+
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
-        this.response = taskList.deleteTask(index);
+        this.response = taskList.deleteTask(this.taskIndex);
         taskList.saveTasks(storage);
         ui.displayOutput(this.response);
     }
