@@ -45,6 +45,7 @@ public class DeadlineCommand extends Command {
         String[] parts = withoutCommand.split("/by", 2);
         String descString = parts[0].trim();
         String dateString = parts[1].trim();
+        assert this.desc != null && dateString != null : "Description and date should not be empty";
         if (descString.isEmpty() || dateString.isEmpty()) {
             throw new InvalidCommandFormatException("Due date cannot be empty...");
         }

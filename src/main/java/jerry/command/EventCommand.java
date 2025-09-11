@@ -40,6 +40,8 @@ public class EventCommand extends Command {
 
         String[] fromDateTime = dateTimeArray[0].trim().split(" ");
         String[] toDateTime = dateTimeArray[1].trim().split(" ");
+        assert !fromDateTime[0].isEmpty() && !fromDateTime[1].isEmpty() : "Start date and time should not be empty";
+        assert !toDateTime[0].isEmpty() && !toDateTime[1].isEmpty() : "To date and time should not be empty";
         this.fromDate = fromDateTime[0].trim();
         this.fromTime = fromDateTime[1].trim();
         this.toDate = toDateTime[0].trim();

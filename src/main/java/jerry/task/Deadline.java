@@ -29,6 +29,7 @@ public class Deadline extends Task {
         super(desc);
         try {
             dueDate = LocalDateTime.parse(dateString, FILE_FORMATTER);
+            assert dueDate != null : "Deadline should not be null after parsing";
         } catch (DateTimeParseException e) {
             throw new InvalidCommandFormatException("Invalid date/time format. "
                     + "Expected format: yyyy-MM-dd HH:mm (e.g., 2025-08-27 18:00)");

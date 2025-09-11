@@ -28,6 +28,8 @@ public class FindCommand extends Command {
      */
     public FindCommand(String input) throws JerryException {
         String[] entries = input.trim().split(" ", 2);
+        assert entries.length > 0 : "Input should not be empty";
+        assert !entries[0].isEmpty() : "Input should start with 'find' command";
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
             throw new InvalidCommandFormatException("Enter the task that you want to find");
         }
