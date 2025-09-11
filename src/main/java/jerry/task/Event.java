@@ -41,6 +41,8 @@ public class Event extends Task {
             this.fromTime = LocalTime.parse(fromTime, TIME_FORMATTER);
             this.toDate = LocalDate.parse(toDate, FILE_DATE_FORMATTER);
             this.toTime = LocalTime.parse(toTime, TIME_FORMATTER);
+            assert this.fromDate != null && this.toDate != null : "fromDate and toDate should never be null after parsing";
+            assert this.fromTime != null && this.toTime != null : "fromTime and toTime should never be null after parsing";
         } catch (DateTimeParseException e) {
             throw new InvalidCommandFormatException("Invalid date format! "
                     + "Expected format: yyyy-MM-dd, e.g., 2022-08-06");
@@ -52,12 +54,14 @@ public class Event extends Task {
             throw new JerryException("");
         }
         String desc = details[2].trim();
+        assert !desc.isEmpty() : "Event description should not be empty";
         String[] fromDateTime = details[3].trim().split(" ");
         String[] toDateTime = details[4].trim().split(" ");
         Event event = new Event(desc, fromDateTime[0], fromDateTime[1], toDateTime[0], toDateTime[1]);
         if (details[1].trim().equals("1")) {
             event.mark();
         }
+        assert event != null : "Event object should not be null";
         return event;
     }
 

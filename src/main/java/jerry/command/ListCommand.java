@@ -12,6 +12,7 @@ public class ListCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) {
+        assert taskList != null : "Task list should not be empty";
         this.response = taskList.getList();
         ui.displayOutput(this.response);
     }

@@ -26,6 +26,7 @@ public class TodoCommand extends Command {
         String trimmed = desc.trim();
         if (trimmed.toLowerCase().startsWith("todo")) {
             trimmed = trimmed.substring(4).trim();
+            assert !trimmed.isEmpty() : "Description must not be empty";
         }
         if (trimmed.isEmpty()) {
             throw new InvalidCommandFormatException("You forgot to describe what your todo is...");

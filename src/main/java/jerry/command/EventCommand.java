@@ -43,6 +43,8 @@ public class EventCommand extends Command {
             throw new InvalidCommandFormatException(
                     "Invalid date/time format. Expected: yyyy-MM-dd HH:mm (e.g., 2025-08-27 12:30)");
         }
+        assert !fromDateTime[0].isEmpty() && !fromDateTime[1].isEmpty() : "Start date and time should not be empty";
+        assert !toDateTime[0].isEmpty() && !toDateTime[1].isEmpty() : "To date and time should not be empty";
         this.fromDate = fromDateTime[0].trim();
         this.fromTime = fromDateTime[1].trim();
         this.toDate = toDateTime[0].trim();

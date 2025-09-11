@@ -27,6 +27,7 @@ public class ByeCommand extends Command {
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
         taskList.saveTasks(storage);
+        assert taskList != null : "Task list should not be empty in the storage file";
         ui.displayOutput(this.end());
     }
 
