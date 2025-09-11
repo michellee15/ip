@@ -28,6 +28,7 @@ public class ToDo extends Task {
         if (desc.isEmpty() || desc.equalsIgnoreCase("todo")) {
             throw new InvalidCommandFormatException("You forgot to describe what your todo is...");
         }
+        assert desc != null && !desc.isEmpty() : "Description should not be empty after parsing";
         return desc;
     }
 

@@ -23,6 +23,8 @@ public class MarkCommand extends Command {
      */
     public MarkCommand(String input) throws InvalidCommandFormatException {
         String[] entries = input.split(" ", 2);
+        assert entries.length > 0 : "Input should not be empty";
+        assert !entries[0].isEmpty() : "Input should start with 'mark' command";
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
             throw new InvalidCommandFormatException("Task number must be positive!");
         }

@@ -32,6 +32,7 @@ public class Parser {
      */
     public static Command parse(String input) throws JerryException {
         String[] entries = input.trim().split(" ", 2);
+        assert !entries[0].isEmpty() : "Command keyword should not be empty";
         CommandEnum command;
         try {
             command = CommandEnum.valueOf(entries[0].trim().substring(0,1).toUpperCase()
