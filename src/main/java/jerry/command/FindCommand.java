@@ -14,6 +14,8 @@ import jerry.ui.Ui;
 public class FindCommand extends Command {
 
     private final String findWord;
+    private static final String MATCHING_TASKS_MESSAGES = "Here are the matching tasks in your list:\n";
+    private static final String NO_MATCHING_TASKS_MESSAGES = "No matching tasks found for: ";
 
     /**
      * It takes in user input and parse them into two components:
@@ -21,11 +23,11 @@ public class FindCommand extends Command {
      * Exception is thrown when the command is invalid and if the user
      * does not enter the keyword to find the matching tasks.
      *
-     * @param userInput input string entered by the user to be parsed.
+     * @param input input string entered by the user to be parsed.
      * @throws JerryException if user input is invalid.
      */
-    public FindCommand(String userInput) throws JerryException {
-        String[] entries = userInput.trim().split(" ", 2);
+    public FindCommand(String input) throws JerryException {
+        String[] entries = input.trim().split(" ", 2);
         assert entries.length > 0 : "Input should not be empty";
         assert !entries[0].isEmpty() : "Input should start with 'find' command";
         if (entries.length < 2 || entries[1].trim().isEmpty()) {
@@ -46,7 +48,7 @@ public class FindCommand extends Command {
      */
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) {
-        StringBuilder result = new StringBuilder("Here are the matching tasks in your list:\n");
+        StringBuilder result = new StringBuilder(MATCHING_TASKS_MESSAGES);
         int index = 1;
         for (int i = 0; i < taskList.getSize(); i++) {
             Task task = taskList.get(i);
@@ -55,11 +57,7 @@ public class FindCommand extends Command {
                 index++;
             }
         }
-        if (index == 1) {
-            this.response = "No matching tasks found for: " + findWord;
-        } else {
-            this.response = result.toString().trim();
-        }
+        this.response = (index == 1) ? String.format(NO_MATCHING_TASKS_MESSAGES, findWord) : result.toString().trim();
         ui.displayOutput(this.response);
     }
 

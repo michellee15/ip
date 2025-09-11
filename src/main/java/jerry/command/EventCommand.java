@@ -17,7 +17,8 @@ import jerry.ui.Ui;
  */
 public class EventCommand extends Command {
 
-    private final String desc;
+    private static final int PREFIX_LENGTH = 5;
+    private final String description;
     private final String fromDate;
     private final String fromTime;
     private final String toDate;
@@ -31,24 +32,32 @@ public class EventCommand extends Command {
      * @param desc user input string to be parsed.
      * @throws InvalidCommandFormatException if the user input format is incorrect.
      */
-    public EventCommand(String desc) throws InvalidCommandFormatException {
-        String[] strArray = getStrings(desc);
-        this.desc = strArray[0].trim();
-        String[] dateData = strArray[1].split("to");
-        String from = dateData[0];
-        String to = dateData[1];
-        String[] fromDateTime = from.trim().split(" ");
-        String[] toDateTime = to.trim().split(" ");
-        if (fromDateTime.length != 2 || toDateTime.length != 2) {
-            throw new InvalidCommandFormatException(
-                    "Invalid date/time format. Expected: yyyy-MM-dd HH:mm (e.g., 2025-08-27 12:30)");
-        }
+    public EventCommand(String input) throws InvalidCommandFormatException {
+        String[] stringArray = getStrings(input);
+        this.description = stringArray[0].trim();
+        String[] dateTimeArray = stringArray[1].split("to");
+        dateTimeFormatChecker(dateTimeArray);
+
+        String[] fromDateTime = dateTimeArray[0].trim().split(" ");
+        String[] toDateTime = dateTimeArray[1].trim().split(" ");
         assert !fromDateTime[0].isEmpty() && !fromDateTime[1].isEmpty() : "Start date and time should not be empty";
         assert !toDateTime[0].isEmpty() && !toDateTime[1].isEmpty() : "To date and time should not be empty";
         this.fromDate = fromDateTime[0].trim();
         this.fromTime = fromDateTime[1].trim();
         this.toDate = toDateTime[0].trim();
         this.toTime = toDateTime[1].trim();
+    }
+
+    /**
+     * Checks that the date and time strings contain exactly a date and a time.
+     */
+    public static void dateTimeFormatChecker(String[] dateTimeArray) throws InvalidCommandFormatException {
+        if (dateTimeArray.length != 2 
+            || dateTimeArray[0].trim().split(" ").length != 2 
+            || dateTimeArray[1].trim().split(" ").length != 2) {
+            throw new InvalidCommandFormatException(
+                    "Invalid date/time format. Expected: yyyy-MM-dd HH:mm (e.g., 2025-08-27 12:30)");
+        }
     }
 
     /**
@@ -60,10 +69,10 @@ public class EventCommand extends Command {
      * @return an array with the description at index 0 and date-time string at index 1.
      * @throws InvalidCommandFormatException if the description is empty or required keywords are missing.
      */
-    private static String[] getStrings(String desc) throws InvalidCommandFormatException {
-        String trimmed = desc.trim();
+    private static String[] getStrings(String input) throws InvalidCommandFormatException {
+        String trimmed = input.trim();
         if (trimmed.toLowerCase().startsWith("event")) {
-            trimmed = trimmed.substring(5).trim();
+            trimmed = trimmed.substring(PREFIX_LENGTH).trim();
         }
         if (trimmed.isEmpty() || trimmed.startsWith("/from")) {
             throw new InvalidCommandFormatException("Event description cannot be empty...");
@@ -77,7 +86,7 @@ public class EventCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
-        Event event = new Event(desc, fromDate, fromTime, toDate, toTime);
+        Event event = new Event(this.description, fromDate, fromTime, toDate, toTime);
         this.response = taskList.addTask(event);
         taskList.saveTasks(storage);
         ui.displayOutput(this.response);

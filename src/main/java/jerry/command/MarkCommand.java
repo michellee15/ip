@@ -12,7 +12,7 @@ import jerry.ui.Ui;
  */
 public class MarkCommand extends Command {
 
-    private final int index;
+    private final int taskIndex;
 
     /**
      * Construct a MarkCommand object based on user input.
@@ -22,6 +22,17 @@ public class MarkCommand extends Command {
      * @throws InvalidCommandFormatException if the input format is invalid or task number is not a positive integer.
      */
     public MarkCommand(String input) throws InvalidCommandFormatException {
+        this.taskIndex = indexParser(input);
+    }
+
+    /**
+     * To check the valid task index from user input.
+     * 
+     * @param input user input string
+     * @return task index as integer 
+     * @throws InvalidCommandFormatException if input is empty or invalid number
+     */
+    private int indexParser(String input) throws InvalidCommandFormatException {
         String[] entries = input.split(" ", 2);
         assert entries.length > 0 : "Input should not be empty";
         assert !entries[0].isEmpty() : "Input should start with 'mark' command";
@@ -29,7 +40,11 @@ public class MarkCommand extends Command {
             throw new InvalidCommandFormatException("Task number must be positive!");
         }
         try {
-            index = Integer.parseInt(entries[1]);
+            int index = Integer.parseInt(entries[1]);
+            if (index <= 0) {
+                throw new InvalidCommandFormatException("Task number must be greater than 0");
+            }
+            return index;
         } catch (NumberFormatException e) {
             throw new InvalidCommandFormatException("Task number must be positive!");
         }
@@ -37,7 +52,7 @@ public class MarkCommand extends Command {
 
     @Override
     public void execute(TaskList taskList, Ui ui, Storage storage) throws JerryException {
-        this.response = taskList.mark(index);
+        this.response = taskList.mark(this.taskIndex);
         taskList.saveTasks(storage);
         ui.displayOutput(this.response);
     }
