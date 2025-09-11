@@ -3,6 +3,7 @@ package jerry.tasklist;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -76,6 +77,7 @@ public class TaskList {
      */
     public String addTask(Task task) {
         taskList.add(task);
+        taskList.sort(Comparator.comparing(Task::getDescription));
         return "Great! New task added:\n" + task.toString()
                 + "\n" + "Now you have " + getSize() + " in your list :)";
     }
