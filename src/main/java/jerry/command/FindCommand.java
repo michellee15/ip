@@ -12,10 +12,9 @@ import jerry.ui.Ui;
  * It parses the user input, and display one or list of matching task if found.
  */
 public class FindCommand extends Command {
-
-    private final String findWord;
     private static final String MATCHING_TASKS_MESSAGES = "Here are the matching tasks in your list:\n";
     private static final String NO_MATCHING_TASKS_MESSAGES = "No matching tasks found for: ";
+    private final String findWord;
 
     /**
      * It takes in user input and parse them into two components:

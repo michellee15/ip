@@ -70,8 +70,7 @@ public class Jerry {
     }
 
     public String getWelcomeMessage() {
-        String welcome = "Hello, nice to meet you! I'm Jerry!\n" 
-                        + "What can I do for you today?";
+        String welcome = "Hello, nice to meet you! I'm Jerry!\n What can I do for you today?";
         return welcome;
     }
 

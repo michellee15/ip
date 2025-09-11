@@ -1,5 +1,4 @@
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -17,13 +16,11 @@ public class MainWindow extends AnchorPane {
     private VBox dialogContainer;
     @FXML
     private TextField userInput;
-    @FXML
-    private Button sendButton;
 
     private Jerry jerry;
 
-    private Image userImage = new Image(this.getClass().getResourceAsStream("/images/tom.png"));
-    private Image jerryImage = new Image(this.getClass().getResourceAsStream("/images/jerry.png"));
+    private final Image userImage = new Image(this.getClass().getResourceAsStream("/images/tom.png"));
+    private final Image jerryImage = new Image(this.getClass().getResourceAsStream("/images/jerry.png"));
 
     @FXML
     public void initialize() {
@@ -42,6 +39,7 @@ public class MainWindow extends AnchorPane {
      * the dialog container. Clears the user input after processing.
      */
     @FXML
+    @SuppressWarnings("unused")
     private void handleUserInput() {
         String input = userInput.getText();
         String response = jerry.getResponse(input);

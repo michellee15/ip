@@ -27,10 +27,9 @@ public class UnmarkCommand extends Command {
 
     /**
      * To check the valid task index from user input.
-     * 
-     * @param input user input string
-     * @return task index as integer 
-     * @throws InvalidCommandFormatException if input is empty or invalid number
+     * @param input user input string.
+     * @return task index as integer.
+     * @throws InvalidCommandFormatException if input is empty or invalid number.
      */
     private int indexParser(String input) throws InvalidCommandFormatException {
         String[] entries = input.split(" ", 2);

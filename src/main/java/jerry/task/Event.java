@@ -41,8 +41,10 @@ public class Event extends Task {
             this.fromTime = LocalTime.parse(fromTime, TIME_FORMATTER);
             this.toDate = LocalDate.parse(toDate, FILE_DATE_FORMATTER);
             this.toTime = LocalTime.parse(toTime, TIME_FORMATTER);
-            assert this.fromDate != null && this.toDate != null : "fromDate and toDate should never be null after parsing";
-            assert this.fromTime != null && this.toTime != null : "fromTime and toTime should never be null after parsing";
+            assert this.fromDate != null && this.toDate != null
+            : "fromDate and toDate should never be null after parsing";
+            assert this.fromTime != null && this.toTime != null
+            : "fromTime and toTime should never be null after parsing";
         } catch (DateTimeParseException e) {
             throw new InvalidCommandFormatException("Invalid date format! "
                     + "Expected format: yyyy-MM-dd, e.g., 2022-08-06");

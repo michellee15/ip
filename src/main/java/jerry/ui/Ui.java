@@ -36,17 +36,32 @@ public class Ui {
         System.out.println("___________________________________________________");
     }
 
+    /**
+     * Displays an error message prefixed with "Oops!".
+     * Also stores the message as the latest output.
+     *
+     * @param message the error message to display
+     */
     public void showError(String message) {
         String errorMessage = "Oops! " + message;
         this.latest = errorMessage;
     }
 
+    /**
+     * Displays a default error message when resources fail to load.
+     * Also stores the message as the latest output.
+     */
     public void showLoadingError() {
         String text = "Failed to load resources. Please try again!";
         this.latest = text;
     }
 
-
+    /**
+     * Displays a given output message to the console.
+     * Also stores the message as the latest output.
+     *
+     * @param text the message to display
+     */
     public void displayOutput(String text) {
         System.out.println(text);
         this.latest = text;

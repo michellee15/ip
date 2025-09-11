@@ -60,12 +60,15 @@ public class Parser {
 
     private static CommandEnum commandEnumParser(String input) throws InvalidCommandException {
         String[] entries = input.trim().split(" ", 2);
+        assert !entries[0].isEmpty() : "Command keyword should not be empty";
         try {
-            return CommandEnum.valueOf(entries[0].trim().substring(0,1).toUpperCase()
+            return CommandEnum.valueOf(
+            entries[0].trim().substring(0, 1).toUpperCase()
             + entries[0].trim().substring(1).toLowerCase());
         } catch (IllegalArgumentException e) {
-            throw new InvalidCommandException("I don't understand what you mean by: "
-                    + input + "\nUse these commands at the start of your sentence instead: "
+            throw new InvalidCommandException("I don't understand"
+                    + "what you mean by: " + input + "\nUse these commands "
+                    + "at the start of your sentence instead: "
                     + "bye/list/todo/deadline/event/mark/unmark/delete");
         }
     }

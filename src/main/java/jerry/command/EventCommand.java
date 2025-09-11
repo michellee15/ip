@@ -42,6 +42,7 @@ public class EventCommand extends Command {
         String[] toDateTime = dateTimeArray[1].trim().split(" ");
         assert !fromDateTime[0].isEmpty() && !fromDateTime[1].isEmpty() : "Start date and time should not be empty";
         assert !toDateTime[0].isEmpty() && !toDateTime[1].isEmpty() : "To date and time should not be empty";
+
         this.fromDate = fromDateTime[0].trim();
         this.fromTime = fromDateTime[1].trim();
         this.toDate = toDateTime[0].trim();
@@ -51,12 +52,12 @@ public class EventCommand extends Command {
     /**
      * Checks that the date and time strings contain exactly a date and a time.
      */
-    public static void dateTimeFormatChecker(String[] dateTimeArray) throws InvalidCommandFormatException {
-        if (dateTimeArray.length != 2 
-            || dateTimeArray[0].trim().split(" ").length != 2 
+    public static void dateTimeFormatChecker(String[] dateTimeArray)
+            throws InvalidCommandFormatException {
+        if (dateTimeArray.length != 2 || dateTimeArray[0].trim().split(" ").length != 2
             || dateTimeArray[1].trim().split(" ").length != 2) {
-            throw new InvalidCommandFormatException(
-                    "Invalid date/time format. Expected: yyyy-MM-dd HH:mm (e.g., 2025-08-27 12:30)");
+            throw new InvalidCommandFormatException("Invalid date/time format. Expected:"
+                + "yyyy-MM-dd HH:mm (e.g., 2025-08-27 12:30)");
         }
     }
 
