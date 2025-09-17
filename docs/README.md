@@ -1,8 +1,8 @@
 # Jerry User Guide
 
-![screenshot of the chatbot](docs/Ui.png)
+![screenshot of the chatbot](Ui.png)
 
-Meet Jerry - your intelligent assistant that <ins>**manages all your task**</ins> in a flash! 
+Meet **Jerry** - your intelligent assistant that **manages all your task** in a flash! 
 Starting from a general to-dos, to scheduling events and tracking deadlines, Jerry got your back! :index_pointing_at_the_viewer:
 And here's a simple guide to take you through on how to use Jerry more effectively! :star2:
 
@@ -14,10 +14,10 @@ And here's a simple guide to take you through on how to use Jerry more effective
 Add simple tasks that don't require date and time to the list
 
 - **Command format:**
-- `todo <task description>`
+`todo <task description>`
 
 - **Example:** 
-- `todo laundry`
+`todo laundry`
 
 - **Expected output**
 ```
@@ -26,14 +26,17 @@ Great! New task added:
 Now you have 1 in your list :)
 
 ```
+
+---
+
 ### :bookmark_tabs: Add `deadline` Task
 Add tasks that has a due date to the list
 
 - **Command format:**
-- `deadline <task description> /by yyyy-MM-dd HH:mm`
+`deadline <task description> /by yyyy-MM-dd HH:mm`
 
 - **Example:**
-- `deadline assignment /by 2025-12-12 23:59`
+`deadline assignment /by 2025-12-12 23:59`
 
 - **Expected output**
 ```
@@ -42,14 +45,17 @@ Great! New task added:
 Now you have 2 in your list :)
 
 ```
+
+---
+
 ### :spiral_calendar: Add `event` Task
 Add an event that requires date and time frame into the list
 
 - **Command format:**
-- `event <task description> /from yyyy-MM-dd HH:mm to yyyy-MM-dd HH:mm`
+`event <task description> /from yyyy-MM-dd HH:mm to yyyy-MM-dd HH:mm`
 
 - **Example:**
-- `event party /from 2025-12-01 10:30 to 2025-12-02 10:30`
+`event party /from 2025-12-01 10:30 to 2025-12-02 10:30`
 
 - **Expected output**
 ```
@@ -59,14 +65,16 @@ Now you have 3 in your list :)
 
 ```
 
+---
+
 ### `mark` Task as Completed 
 To update the list that task has been accomplished
 
 - **Command format:**
-- `mark <task number>`
+`mark <task number>`
 
 - **Example:**
-- `mark 1`
+`mark 1`
 
 - **Expected output**
 ```
@@ -74,14 +82,17 @@ Yay! One task down:
 [TODO][X] laundry 
 
 ```
+
+---
+
 ### `unmark` Task as Not Completed 
 To update the list that task has yet to be accomplished
 
 - **Command format:**
-- `unmark <task number>`
+`unmark <task number>`
 
 - **Example:**
-- `unmark 1`
+`unmark 1`
 
 - **Expected output**
 ```
@@ -90,14 +101,16 @@ Noted! I've marked this task as undone:
 
 ```
 
+---
+
 ### `delete` Task 
 To remove task from the list permanently
 
 - **Command format:**
-- `delete <task number>`
+`delete <task number>`
 
 - **Example:**
-- `delete 1`
+`delete 1`
 
 - **Expected output**
 ```
@@ -109,14 +122,16 @@ Now you have 2 tasks in the list!
 
 > :information_source: **Note**: <task number> should be in between 1 and the total number of the tasks in the list
 
+---
+
 ### `list` all Tasks
 To display all the tasks in the list 
 
 - **Command format:**
-- `list`
+`list`
 
 - **Example:**
-- `list`
+`list`
 
 - **Expected output**
 ```
@@ -128,14 +143,16 @@ Here is your task list:
 ```
 > :information_source: **Note**: tasks in the list are automatically sorted in alphabetical order based on the task description
 
+---
+
 ### `find` Task 
 To all the tasks based on keywords entered by user 
 
 - **Command format:**
-- `find <keyword>`
+`find <keyword>`
 
 - **Example:**
-- `find book`
+`find book`
 
 - **Expected output**
 ```
@@ -144,17 +161,22 @@ Here are the matching tasks in your list:
 2. [DEADLINE][] return book (by: 20 Nov 2025 12:30)
 
 ```
+
+---
+
 ### `bye` command
 To exit and close Jerry
 
 - **Command format:**
-- `bye`
+`bye`
 
 - **Example:**
-- `bye`
+`bye`
 
 - **Expected output**
 `Bye! See you next time :D`
+
+---
 
 ## FAQ
 
