@@ -42,7 +42,6 @@ public class MainWindow extends AnchorPane {
      * the dialog container. Clears the user input after processing.
      */
     @FXML
-    @SuppressWarnings("unused")
     private void handleUserInput() {
         String input = userInput.getText();
         String response = jerry.getResponse(input);
@@ -52,7 +51,8 @@ public class MainWindow extends AnchorPane {
         );
         userInput.clear();
 
-        //AI-assisted: for a pause before closing app instead of directly closing the app after the user enters "bye"
+        //AI-assisted: to add a pause for 30 seconds before closing app 
+        //instead of directly closing the app after the user enters "bye".
         if (input.trim().equalsIgnoreCase("bye")) {
             PauseTransition delay = new PauseTransition(Duration.seconds(30));
             delay.setOnFinished(event -> Platform.exit());
