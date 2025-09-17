@@ -38,7 +38,6 @@ public class Deadline extends Task {
 
     /**
      * Method to create a Deadline task from file data.
-     * <p>
      * This method is used when loading tasks from storage and ensures
      * proper parsing and validation of the due date.
      *
