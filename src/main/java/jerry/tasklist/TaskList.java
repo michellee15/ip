@@ -70,7 +70,7 @@ public class TaskList {
     }
 
     /**
-     * Adds a task to the task list.
+     * Adds a task to the task list and sort it in chronological order everytime a task is added.
      *
      * @param task the task to add.
      * @return a confirmation message including the added task and updated task count.
@@ -79,7 +79,7 @@ public class TaskList {
         taskList.add(task);
         taskList.sort(Comparator.comparing(Task::getDescription));
         return "Great! New task added:\n" + task.toString()
-                + "\n" + "Now you have " + getSize() + " in your list :)";
+                + "\n" + "Now you have " + this.getSize() + " tasks in your list :)";
     }
 
     public Task get(int index) {

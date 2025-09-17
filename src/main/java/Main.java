@@ -26,6 +26,7 @@ public class Main extends Application {
             stage.setScene(scene);
             stage.setMinHeight(220);
             stage.setMinWidth(417);
+            stage.setTitle("Jerry");
             stage.show();
         } catch (JerryException e) {
             System.out.println(e.getMessage());
