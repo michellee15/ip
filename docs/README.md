@@ -44,8 +44,7 @@ Add tasks that has a due date to the list
   `deadline assignment /by 2025-12-12 23:59`
 
 - **Expected output**
-```
-Great! New task added:
+``` Great! New task added:
 [DUE][] assignment (by: 12 Dec 2025 23:59)
 Now you have 2 in your list :)
 ```
