@@ -52,7 +52,7 @@ application {
 
 shadowJar {
     archiveBaseName = "jerry"
-    archiveFileName = 'jerry-v2.jar'
+    archiveFileName = 'jerry-final.jar'
     archiveClassifier = null
 }
 

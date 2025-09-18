@@ -51,10 +51,10 @@ public class MainWindow extends AnchorPane {
         );
         userInput.clear();
 
-        //AI-assisted: to add a pause for 30 seconds before closing app 
+        //AI-assisted: to add a pause transition before closing app 
         //instead of directly closing the app after the user enters "bye".
         if (input.trim().equalsIgnoreCase("bye")) {
-            PauseTransition delay = new PauseTransition(Duration.seconds(30));
+            PauseTransition delay = new PauseTransition(Duration.seconds(800.00));
             delay.setOnFinished(event -> Platform.exit());
             delay.play();
         }

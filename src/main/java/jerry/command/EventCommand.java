@@ -35,7 +35,7 @@ public class EventCommand extends Command {
     public EventCommand(String input) throws InvalidCommandFormatException {
         String[] stringArray = getStrings(input);
         this.description = stringArray[0].trim();
-        String[] dateTimeArray = stringArray[1].split("to");
+        String[] dateTimeArray = stringArray[1].trim().replaceFirst("/?to", "to").split("to");
         dateTimeFormatChecker(dateTimeArray);
 
         String[] fromDateTime = dateTimeArray[0].trim().split(" ");
@@ -56,8 +56,9 @@ public class EventCommand extends Command {
             throws InvalidCommandFormatException {
         if (dateTimeArray.length != 2 || dateTimeArray[0].trim().split(" ").length != 2
             || dateTimeArray[1].trim().split(" ").length != 2) {
-            throw new InvalidCommandFormatException("Invalid date/time format. Expected:"
-                + "yyyy-MM-dd HH:mm (e.g., 2025-08-27 12:30)");
+            throw new InvalidCommandFormatException("Invalid format! Expected format:\n" 
+            + "/from YYYY-MM-dd HH:mm to YYYY-MM-dd HH:mm\n"
+            + "Note that 'to' does not require slash '/'");
         }
     }
 
@@ -80,7 +81,9 @@ public class EventCommand extends Command {
         }
         String[] strArray = trimmed.split("/from");
         if (strArray.length < 2) {
-            throw new InvalidCommandFormatException("Event must have '/from' and 'to' keywords.");
+            String errorMessage = "Event must have '/from' and 'to' keyword!\n" 
+            + "Note that 'to' does not require slash '/'";
+            throw new InvalidCommandFormatException(errorMessage);
         }
         return strArray;
     }
