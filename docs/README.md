@@ -44,7 +44,8 @@ Add tasks that has a due date to the list
   `deadline assignment /by 2025-12-12 23:59`
 
 - **Expected output**
-``` Great! New task added:
+``` 
+Great! New task added:
 [DUE][] assignment (by: 12 Dec 2025 23:59)
 Now you have 2 in your list :)
 ```
@@ -82,7 +83,6 @@ To update the list that task has been accomplished
 ```
 Yay! One task down:
 [TODO][X] laundry 
-
 ```
 
 ---
@@ -114,7 +114,10 @@ To remove task from the list permanently
   `delete 1`
 
 - **Expected output**
-<pre>```Noted! I've marked this task as deleted: [TODO][] laundry Now you have 2 tasks in the list!```</pre>
+```
+Noted! I've marked this task as deleted: 
+[TODO][] laundry Now you have 2 tasks in the list!
+```
 
 > ℹ️ **Note**: <task number> should be in between 1 and the total number of the tasks in the list
 
@@ -130,12 +133,12 @@ To display all the tasks in the list
   `list`
 
 - **Expected output**
-
-
+```
 Here is your task list:
 1. [TODO][] laundry
 2. [DUE][] assignment (by: 12 Dec 2025 23:59)
 3. [EVENT][] party (from: 01 Dec 2025 10:30 to: 02 Dec 2025 10:30)
+```
 
 > ℹ️ **Note**: tasks in the list are automatically sorted in alphabetical order based on the task description
 
