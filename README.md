@@ -1,6 +1,6 @@
 # Jerry User Guide
 
-![screenshot of the chatbot](Ui.png)
+![screenshot of the chatbot](docs/Ui.png)
 
 Meet **Jerry** - your intelligent assistant that **manages all your task** in a flash!
 Starting from a general to-dos, to scheduling events and tracking deadlines, Jerry got your back!🫵
