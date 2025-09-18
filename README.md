@@ -9,7 +9,7 @@ And here's a simple guide to take you through on how to use Jerry more effective
 ---
 
 ## Getting started is easy,
-1. download it from *[here](https://github.com/michellee15/ip/releases/tag/A-Jar)*.
+1. download it from *[here](https://github.com/michellee15/ip/releases/tag/A-Release)*.
 2. double-click it.
 3. add your tasks.
 4. let it manage your tasks for you.😄
