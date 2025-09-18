@@ -114,11 +114,7 @@ To remove task from the list permanently
   `delete 1`
 
 - **Expected output**
-```
-Noted! I've marked this task as deleted:
-[TODO][] laundry 
-Now you have 2 tasks in the list!
-```
+<pre>```Noted! I've marked this task as deleted: [TODO][] laundry Now you have 2 tasks in the list!```</pre>
 
 > ℹ️ **Note**: <task number> should be in between 1 and the total number of the tasks in the list
 
@@ -135,12 +131,12 @@ To display all the tasks in the list
 
 - **Expected output**
 
-```
+
 Here is your task list:
 1. [TODO][] laundry
 2. [DUE][] assignment (by: 12 Dec 2025 23:59)
 3. [EVENT][] party (from: 01 Dec 2025 10:30 to: 02 Dec 2025 10:30)
-```
+
 > ℹ️ **Note**: tasks in the list are automatically sorted in alphabetical order based on the task description
 
 ---
